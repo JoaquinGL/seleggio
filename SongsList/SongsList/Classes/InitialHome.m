@@ -8,6 +8,8 @@
 
 #import "InitialHome.h"
 #import "Animation.h"
+#import "WeddingListViewController.h"
+
 @interface InitialHome ()
 {
     IBOutlet UIImageView* portraitBackgroundImage;
@@ -70,5 +72,17 @@
     }
     
 }
+
+
+-(IBAction)showWeddingList:(id)sender
+{
+    WeddingListViewController *dkmainViewController = [[WeddingListViewController alloc] init];
+    
+    
+    dkmainViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentViewController:dkmainViewController animated:YES completion:nil];
+}
+
 
 @end

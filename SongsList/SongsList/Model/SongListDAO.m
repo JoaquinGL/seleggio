@@ -13,28 +13,36 @@
 {
     NSMutableArray *songsContent;
     NSMutableDictionary *songsContentDictionary;
+    NSString *dbPath;
+    NSString *databasename;
+    sqlite3 *songDB;
 }
 
+- (void) initDatabase
+{
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    dbPath = [[[ NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:@"songsList.sqlite"];
+    BOOL success = [ fileMgr fileExistsAtPath:dbPath ];
+    
+    if (!success)
+        NSLog(@"Cannot locate database file '%@'.", dbPath);
+    if (!(sqlite3_open([dbPath UTF8String], &songDB) == SQLITE_OK))
+    {
+        NSLog(@"An error has ocurred");
+    }
+}
 
 - ( NSMutableArray* ) getMySongs
 {
     @try {
-        NSFileManager *fileMgr = [NSFileManager defaultManager];
         
-        NSString *dbPath = [[[ NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:@"songsList.sqlite"];
-        BOOL success = [ fileMgr fileExistsAtPath:dbPath ];
-    
-        if (!success)
-            NSLog(@"Cannot locate database file '%@'.", dbPath);
-        if (!(sqlite3_open([dbPath UTF8String], &db) == SQLITE_OK))
-        {
-            NSLog(@"An error has ocurred");
-        }
+        [self initDatabase];
         
         const char *sql = "SELECT Id, TitleName, GroupName, VideoURL, ImageURL FROM songsDetails";
         sqlite3_stmt *sqlStatement;
         
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
+        if(sqlite3_prepare(songDB, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
         {
              NSLog(@"Problem with prepare statement");
         }
@@ -52,12 +60,22 @@
             
             [songsContent addObject:songList];
         }
+        
+        
+        sqlite3_finalize(sqlStatement);
+        sqlite3_close(songDB);
+        
     }
     @catch (NSException *exception) {
         NSLog(@"An exception occured: %@", [exception reason]);
     }
     @finally {
-        return songsContent;
+        
+        if (!(sqlite3_close(songDB)!= SQLITE_OK))
+        {
+            NSLog(@"An error has ocurred");
+        }
+         return songsContent;
     }
 }
 
@@ -99,7 +117,6 @@
 {
     return (( SongList* )[songsContentDictionary objectForKey:idSong]).imageURL;
 }
-
 
 - ( NSInteger ) getNumberOfRegisters
 {

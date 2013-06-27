@@ -7,21 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QBKOverlayMenuView.h"
+#import "MBProgressHUD.h"
 
-@interface DetailSongViewController : UIViewController
+@interface DetailSongViewController : UIViewController<QBKOverlayMenuViewDelegate, MBProgressHUDDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 
 {
-    NSString *titleSongName_;
+    NSString *songName_;
     NSString *groupName_;
-    NSString *identifySong_;
+    NSString *videoURL_;
+    NSString *idSong_;
 }
 
-@property (nonatomic, retain) IBOutlet NSString * titleSongName;
-@property (nonatomic, retain) IBOutlet NSString * identifySong;
+@property (nonatomic, retain) IBOutlet NSString * songName;
+@property (nonatomic, retain) IBOutlet NSString * videoURL;
 @property (nonatomic, retain) IBOutlet NSString * groupName;
+@property (nonatomic, retain) IBOutlet NSString * idSong;
 
 - (void) setTitleViewInit:(NSString *)titleSongName;
-- (void) setIdentify:(NSString *)identify;
+- (void) setURLVideo:(NSString *)identify;
 - (void) setGroupNameInit:(NSString *)groupNameString;
+
+- (void) setIDSong: ( NSString * )idSong
+       setSongName: ( NSString * )songName
+      setGroupName: ( NSString * )groupName
+       setVideoURL: ( NSString * )videoURL;
 
 @end

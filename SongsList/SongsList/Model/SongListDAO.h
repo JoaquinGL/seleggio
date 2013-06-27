@@ -11,9 +11,8 @@
 
 @interface SongListDAO : NSObject
 {
-    sqlite3* db;
+   // sqlite3* db;
 }
-
 
 
 - ( NSInteger ) getNumberOfRegisters;

@@ -18,42 +18,42 @@
 
 - (void) initSongsListDAO
 {
-    if(!songListDAO)
-        songListDAO = [[SongListDAO alloc] init];
+    if ( !songListDAO )
+        songListDAO = [ [ SongListDAO alloc ]init ];
 }
 
-- ( NSString* ) getIDFromIndex: ( NSInteger )index
+- ( id )getIDFromIndex: ( NSInteger )index
 {
-    [self initSongsListDAO];
+    [ self initSongsListDAO ];
     
-    return [songListDAO getIdFormIndex:index];
+    return [ songListDAO getIdFormIndex: index ];
 }
 
-- (NSString *) getTitleWithId:(id) idSong
+- ( id )getTitleWithId: ( id )idSong
 {
-    return [songListDAO getTitleWithId:idSong];
+    return [ songListDAO getTitleWithId: idSong ];
 }
 
-- (NSString *) getGroupWithId:(id) idSong
+- ( id )getGroupWithId: ( id )idSong
 {
-    return [songListDAO getGroupWithId:idSong];
+    return [ songListDAO getGroupWithId: idSong ];
 }
 
-- (NSString *) getVideoWithId:(id) idSong
+- ( id )getVideoWithId: ( id )idSong
 {
-    return [songListDAO getVideoWithId:idSong];
+    return [ songListDAO getVideoWithId: idSong ];
 }
 
-- (NSString *) getImageWithId:(id) idSong
+- ( id )getImageWithId: ( id )idSong
 {
-    return [songListDAO getImageWithId:idSong];
+    return [ songListDAO getImageWithId: idSong ];
 }
 
-- ( int ) getNumberOfRegisters
+- ( int )getNumberOfRegisters
 {
-    [self initSongsListDAO];
+    [ self initSongsListDAO ];
     
-    return [songListDAO getNumberOfRegisters];
+    return [ songListDAO getNumberOfRegisters ];
 }
 
 

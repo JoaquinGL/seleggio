@@ -11,6 +11,9 @@
 #import "Defines.h"
 #import "Animation.h"
 #import "Reachability.h"
+#import "QBKOverlayMenuView.h"
+#import "WeddingListModel.h"
+
 
 #define URL_YOUTUBE @"https://gdata.youtube.com/feeds/api/standardfeeds/on_the_web?v=2&alt=json&max-results=1"
 
@@ -19,7 +22,9 @@
 {
     NSArray* videoList;
     NSArray* groupList;
-    
+    NSString *weddingName;
+    BOOL saveWeddingName;
+    UIAlertView *weddingListNameAlert;
     IBOutlet UILabel* titleSongLabel;
     IBOutlet UILabel* groupLabel;
     
@@ -27,26 +32,36 @@
     IBOutlet UIImageView* landscapeBackgroundImage;
     NetworkStatus remoteHostStatus;
     Reachability *reachability;
+    WeddingListModel *weddingListModel;
+    QBKOverlayMenuView *_qbkOverlayMenuView;
 }
 
 @property (nonatomic, weak) IBOutlet UISwitch *lowQualitySwitch;
 @property (nonatomic, weak) IBOutlet UIView *videoContainerView;
 @property (nonatomic, strong) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
 
+typedef enum {
+    optionsList,
+    removeFromList,
+    addToList
+} SongListOptionSelect;
+
+
 @end
 
 @implementation DetailSongViewController
 
 @synthesize
-    titleSongName = titleSongName_,
-    identifySong = identifySong_,
-    groupName = groupName_;
+    songName = songName_,
+    videoURL = videoURL_,
+    groupName = groupName_,
+    idSong = idSong_;
 
 - (void) didReceiveMemoryWarning
 {
     
-    self.titleSongName = nil;
-    self.identifySong = nil;
+    self.songName = nil;
+    self.videoURL = nil;
     
     groupLabel = nil;
     videoList = nil;
@@ -54,6 +69,14 @@
     
     portraitBackgroundImage = nil;
     landscapeBackgroundImage = nil;
+    
+    _qbkOverlayMenuView = nil;
+    
+    self.idSong = nil;
+    
+    weddingListModel = nil;
+    
+    weddingListNameAlert = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -75,11 +98,9 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackStateDidChange:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerLoadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
-
-    titleSongLabel.text =  self.titleSongName;
+    [self initNotifications];
+    
+    titleSongLabel.text =  self.songName;
     
     groupLabel.text = self.groupName;
     
@@ -88,9 +109,44 @@
     
     (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) ? ([landscapeBackgroundImage setAlpha:1]) : ([portraitBackgroundImage setAlpha:1]);
     
-    
-    
     [self initNetwork];
+    
+    [self initMenu];
+    
+    saveWeddingName = NO;
+
+}
+
+- (void) initNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerPlaybackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:nil];
+    
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerPlaybackStateDidChange:)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:nil];
+    
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerLoadStateDidChange:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+}
+
+- (void) initMenu
+{
+    QBKOverlayMenuViewOffset offset;
+    offset.bottomOffset = 44;
+    
+    _qbkOverlayMenuView = [[QBKOverlayMenuView alloc] initWithDelegate:self position:kQBKOverlayMenuViewPositionTop offset:offset];
+    [_qbkOverlayMenuView setParentView:[self view]];
+    
+    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"selectList-button.png"] index:0];
+    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"cross-button.png"] index:1];
+    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"rw-button.png"] index:2];
+    
 }
 
 
@@ -102,7 +158,10 @@
 
 - (void) initNetwork
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNetworkChange:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
     
     reachability = [Reachability reachabilityForInternetConnection];
     [reachability startNotifier];
@@ -138,7 +197,7 @@
             self.lowQualitySwitch.on = YES;
         }
         
-        self.videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:self.identifySong];
+        self.videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:self.videoURL];
         
         if (self.lowQualitySwitch.on)
             self.videoPlayerViewController.preferredVideoQualities = @[ @(XCDYouTubeVideoQualitySmall240), @(XCDYouTubeVideoQualityMedium360) ];
@@ -172,11 +231,7 @@
      ];
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-	[self playYouTubeVideo:textField];
-	return YES;
-}
+
 
 
 #pragma mark - Notifications
@@ -247,11 +302,11 @@
 
 - (void) setTitleViewInit:(NSString *)titleSongName
 {
-    self.titleSongName = titleSongName;
+    self.songName = titleSongName;
 }
-- (void) setIdentify:(NSString *)identify
+- (void) setURLVideo:(NSString *)identify
 {
-    self.identifySong = identify;
+    self.videoURL = identify;
 }
 
 - (void) setGroupNameInit:(NSString *)groupNameString
@@ -259,6 +314,17 @@
     self.groupName = groupNameString;
 }
 
+
+- (void) setIDSong: ( NSString * )idSong
+       setSongName: ( NSString * )songName
+      setGroupName: ( NSString * )groupName
+       setVideoURL: ( NSString * )videoURL
+{
+    self.idSong = idSong;
+    self.songName = songName;
+    self.groupName = groupName;
+    self.videoURL = videoURL;
+}
 
 #pragma mark -Rotate method
 
@@ -275,6 +341,181 @@
                                fadeOut: portraitBackgroundImage];
     }
     
+}
+
+#pragma mark - Métodos de QBKOverlayMenuViewDelegate
+- (void)overlayMenuView:(QBKOverlayMenuView *)overlayMenuView didActivateAdditionalButtonWithIndex:(NSInteger)index
+{
+    NSLog(@"Botón pulsado con índice: %d", index);
+    
+    if (!weddingListModel)
+        weddingListModel = [[WeddingListModel alloc] init];
+    
+    switch (index) {
+        case optionsList:
+            {
+                [self showPrompt];
+            
+                [_qbkOverlayMenuView mainButtonPressed];
+            }
+            break;
+            
+        case removeFromList:
+            // de la lista que actualmente esta.
+            break;
+            
+        case addToList:
+        {
+            NSLog(@"-> SongID:%@ ",self.idSong);
+            NSLog(@"-> SongName:%@ ",self.songName);
+            NSLog(@"-> SongGroup:%@ ",self.groupName);
+            
+            
+            // Si El listado de bodas esta Vacio, hay que forzar a escribir el nombre de la boda.
+            
+            weddingName = [weddingListModel getTheLastWeddingName];
+            
+            if (! weddingName)
+                [self showPrompt];
+            else
+            {
+                [self saveWeddingName];
+            }
+            
+            [_qbkOverlayMenuView mainButtonPressed];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    
+    saveWeddingName = (![textField.text isEqualToString:@""]);
+    
+	[textField resignFirstResponder];
+    return YES;
+}
+
+- (void) showPrompt
+{
+   weddingListNameAlert = [[UIAlertView alloc] initWithTitle:@"Añadir a listado de bodas" message:@"\n\n\n"
+                                                           delegate:self cancelButtonTitle:NSLocalizedString(@"Cancelar",nil) otherButtonTitles:NSLocalizedString(@"Guardar",nil), nil];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,50,260,25)];
+    titleLabel.font = [UIFont systemFontOfSize:16];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.shadowColor = [UIColor blackColor];
+    titleLabel.shadowOffset = CGSizeMake(0,-1);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"Nombre de la boda";
+    
+    [weddingListNameAlert addSubview:titleLabel];
+
+    UITextField *weddingNameField = [[UITextField alloc] initWithFrame:CGRectMake(16,83,252,25)];
+    weddingNameField.font = [UIFont systemFontOfSize:18];
+    weddingNameField.backgroundColor = [UIColor whiteColor];
+    
+    weddingNameField.keyboardAppearance = UIKeyboardAppearanceAlert;
+    weddingNameField.delegate = self;
+    
+    [weddingNameField becomeFirstResponder];
+    [weddingListNameAlert addSubview:weddingNameField];
+    
+   
+    [weddingListNameAlert show];
+
+}
+
+- (void) saveWeddingName
+{
+    NSString *guid = [self GetUUID];
+    
+    NSDictionary * weddingContent = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     guid,@"ID"
+                                     , weddingName, @"name"
+                                     , self.idSong, @"IDSongDetail"
+                                     , nil];
+    
+    [ weddingListModel insertWeding: weddingContent ];
+    
+    [self showModalNotification];
+
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (!weddingName)
+        weddingName = [[NSString alloc]init];
+
+    weddingName = textField.text;
+    
+    
+    if ((saveWeddingName) && (! [weddingName isEqualToString:@""]))
+        [self saveWeddingName];
+    
+    
+    [weddingListNameAlert dismissWithClickedButtonIndex:0 animated:YES];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    saveWeddingName = (buttonIndex == 1);
+}
+
+- (void) showModalNotification
+{
+    MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:HUD];
+	
+	HUD.dimBackground = YES;
+	
+	// Regiser for HUD callbacks so we can remove it from the window at the right time
+	HUD.delegate = self;
+    
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+	
+    HUD.mode = MBProgressHUDModeCustomView;
+    
+    HUD.labelText = @"Guardado";
+    
+	// Show the HUD while the provided method executes in a new thread
+	[HUD showWhileExecuting:@selector(finishNotification) onTarget:self withObject:nil animated:YES];
+}
+
+- (void)finishNotification {
+    //El nombre de la boda DEBE SER UNICO
+    //comprobar que no se ha introducido NOMBRE BODA+CANCION
+    //En caso de que no exista, se introduce el nombre de la cancion para el nombre de la boda.
+	sleep(1);
+}
+
+
+- (NSString *)GetUUID
+{
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge NSString *)string;
+}
+
+
+- (void)didPerformUnfoldActionInOverlayMenuView:(QBKOverlayMenuView *)overlaymenuView
+{
+    NSLog(@"Menú DESPLEGADO");
+}
+
+- (void)didPerformFoldActionInOverlayMenuView:(QBKOverlayMenuView *)overlaymenuView
+{
+    NSLog(@"Menú REPLEGADO");
 }
 
 

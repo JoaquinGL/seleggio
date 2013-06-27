@@ -39,6 +39,8 @@
    self.navigationController.navigationBar.translucent = YES;
     
     [self initData];
+    
+   // self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed: @"tableBG.png"]];
        
 }
 
@@ -159,12 +161,11 @@
     }
     
    
-    
-    [detailSongView setTitleViewInit: [songListModel getTitleWithId:idSong]];
-    
-    [detailSongView setIdentify:  [songListModel getVideoWithId:idSong] ];
-    
-    [detailSongView setGroupNameInit:  [songListModel getGroupWithId:idSong]];
+    [detailSongView setIDSong:idSong
+                  setSongName:[songListModel getTitleWithId:idSong]
+                 setGroupName:[songListModel getGroupWithId:idSong]
+                  setVideoURL:[songListModel getVideoWithId:idSong]
+     ];
 
 }
 

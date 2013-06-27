@@ -13,11 +13,11 @@
 
 
 - ( NSInteger ) getNumberOfRegisters;
-- ( NSString* ) getIDFromIndex: ( NSInteger )index;
+- ( id )getIDFromIndex: ( NSInteger )index;
 
-- (NSString *) getTitleWithId:(id) idSong;
-- (NSString *) getGroupWithId:(id) idSong;
-- (NSString *) getImageWithId:(id) idSong;
-- (NSString *) getVideoWithId:(id) idSong;
+- ( id )getTitleWithId: ( id )idSong;
+- ( id )getGroupWithId: ( id )idSong;
+- ( id )getImageWithId: ( id )idSong;
+- ( id )getVideoWithId: ( id )idSong;
 
 @end

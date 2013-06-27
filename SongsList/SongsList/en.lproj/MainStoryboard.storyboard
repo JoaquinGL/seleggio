@@ -39,30 +39,33 @@
                                     <constraint firstAttribute="height" constant="55" id="hHq-Lj-rO9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
-                                <state key="normal" title="Canciones selecionadas" backgroundImage="labelBG.png">
+                                <state key="normal" title="Listado de bodas" backgroundImage="labelBG.png">
                                     <color key="titleColor" red="1" green="0.97012811899999996" blue="0.91124716279999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c80-h9-SXm">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="wpG-LJ-HB4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
-                                <state key="normal" title="Historial" backgroundImage="labelBG.png">
-                                    <color key="titleColor" red="1" green="0.97012811899999996" blue="0.91124716279999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <segue destination="Eov-P7-UXI" kind="modal" id="1Cs-dI-FkK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8n-k2-0PA">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="LAA-6W-GkN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
+                                <state key="normal" title="Más vistos" backgroundImage="labelBG.png">
+                                    <color key="titleColor" red="1" green="0.97012811899999996" blue="0.91124716279999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61J-MZ-va8">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="CO0-wA-HwX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="18"/>
                                 <state key="normal" title="Nuestros videos" backgroundImage="labelBG.png">
@@ -77,22 +80,22 @@
                         <color key="backgroundColor" red="0.85490202900000001" green="0.81960791349999995" blue="0.78431379800000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="TPe-VB-lK1" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" type="default" id="4Dm-GS-DXq"/>
-                            <constraint firstItem="c80-h9-SXm" firstAttribute="top" secondItem="cWx-pZ-Oeb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7wH-CV-lja"/>
-                            <constraint firstAttribute="trailing" secondItem="c80-h9-SXm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Afb-Rf-wdy"/>
                             <constraint firstItem="A1t-qP-r0D" firstAttribute="bottom" secondItem="eOp-KQ-Qgh" secondAttribute="bottom" type="default" id="BKO-qW-X0O"/>
                             <constraint firstItem="A1t-qP-r0D" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" type="default" id="CIx-UC-ktx"/>
                             <constraint firstItem="MWf-Sx-kCo" firstAttribute="top" secondItem="eOp-KQ-Qgh" secondAttribute="top" constant="30" id="FDn-us-ea8"/>
                             <constraint firstAttribute="trailing" secondItem="MWf-Sx-kCo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MVX-1Y-fsl"/>
                             <constraint firstItem="MWf-Sx-kCo" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Qr2-ki-hCr"/>
                             <constraint firstAttribute="trailing" secondItem="D8n-k2-0PA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rct-QW-oqB"/>
+                            <constraint firstItem="61J-MZ-va8" firstAttribute="top" secondItem="D8n-k2-0PA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="TEc-cj-Pqi"/>
+                            <constraint firstItem="61J-MZ-va8" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Tkc-Hx-IWA"/>
+                            <constraint firstAttribute="trailing" secondItem="61J-MZ-va8" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UWo-hq-LNd"/>
                             <constraint firstItem="A1t-qP-r0D" firstAttribute="trailing" secondItem="eOp-KQ-Qgh" secondAttribute="trailing" type="default" id="YuC-j9-R52"/>
-                            <constraint firstItem="c80-h9-SXm" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="d78-0k-1Hm"/>
                             <constraint firstAttribute="trailing" secondItem="cWx-pZ-Oeb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="h2Z-46-fFA"/>
                             <constraint firstItem="cWx-pZ-Oeb" firstAttribute="top" secondItem="MWf-Sx-kCo" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kqN-Rj-6bS"/>
                             <constraint firstItem="cWx-pZ-Oeb" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ld1-yx-0h8"/>
                             <constraint firstItem="TPe-VB-lK1" firstAttribute="top" secondItem="eOp-KQ-Qgh" secondAttribute="top" type="default" id="nA4-XS-crL"/>
+                            <constraint firstItem="D8n-k2-0PA" firstAttribute="top" secondItem="cWx-pZ-Oeb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="nJ2-oz-6oO"/>
                             <constraint firstItem="D8n-k2-0PA" firstAttribute="leading" secondItem="eOp-KQ-Qgh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="pbA-16-Qsw"/>
-                            <constraint firstItem="D8n-k2-0PA" firstAttribute="top" secondItem="c80-h9-SXm" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pe6-v7-j6S"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -189,7 +192,7 @@
             <objects>
                 <viewController storyboardIdentifier="detailSongView" id="jxu-bD-Rde" userLabel="DetailSongViewController" customClass="DetailSongViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZr-fy-0tT">
-                        <rect key="frame" x="0.0" y="44" width="568" height="276"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="showVideoBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISN-ea-cqw"/>
@@ -246,6 +249,7 @@
                         <constraints>
                             <constraint firstItem="nol-uq-Wfe" firstAttribute="leading" secondItem="mZr-fy-0tT" secondAttribute="leading" type="default" id="2H3-Ot-bdA"/>
                             <constraint firstItem="ISN-ea-cqw" firstAttribute="trailing" secondItem="mZr-fy-0tT" secondAttribute="trailing" type="default" id="2PL-U6-Ip9"/>
+                            <constraint firstItem="g6e-bC-C5J" firstAttribute="top" secondItem="mZr-fy-0tT" secondAttribute="top" constant="54" id="2me-Zs-6lB"/>
                             <constraint firstItem="nol-uq-Wfe" firstAttribute="trailing" secondItem="mZr-fy-0tT" secondAttribute="trailing" type="default" id="ASm-I3-zh2"/>
                             <constraint firstItem="xzy-g7-FE1" firstAttribute="trailing" secondItem="mZr-fy-0tT" secondAttribute="trailing" type="default" id="FZb-mo-MRs"/>
                             <constraint firstItem="nol-uq-Wfe" firstAttribute="top" secondItem="mZr-fy-0tT" secondAttribute="top" constant="85" id="Ggw-nb-qhd"/>
@@ -258,14 +262,12 @@
                             <constraint firstItem="ISN-ea-cqw" firstAttribute="top" secondItem="mZr-fy-0tT" secondAttribute="top" constant="-50" id="m3M-UA-LGz"/>
                             <constraint firstItem="g6e-bC-C5J" firstAttribute="trailing" secondItem="mZr-fy-0tT" secondAttribute="trailing" type="default" id="pMU-do-dkW"/>
                             <constraint firstItem="kbu-nL-PU1" firstAttribute="top" secondItem="mZr-fy-0tT" secondAttribute="top" constant="-110" id="vUk-Eo-akw"/>
-                            <constraint firstItem="g6e-bC-C5J" firstAttribute="top" secondItem="mZr-fy-0tT" secondAttribute="top" constant="54" id="xs7-vT-vQj"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="N7X-ng-XxF">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Cf-60-31g">
-                            <rect key="frame" x="212" y="6" width="144" height="33"/>
+                            <rect key="frame" x="88" y="6" width="144" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="20"/>
                             <state key="normal" title="Detalle">
@@ -278,7 +280,7 @@
                         </button>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="groupLabel" destination="g6e-bC-C5J" id="fLQ-ac-Xo8"/>
                         <outlet property="landscapeBackgroundImage" destination="ISN-ea-cqw" id="PMV-MF-cM7"/>
@@ -312,6 +314,56 @@
             </objects>
             <point key="canvasLocation" x="-122" y="-724"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7CF-TI-4c1">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Eov-P7-UXI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qhO-WI-4YN">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.85490202900000001" green="0.81960791349999995" blue="0.78431379800000001" alpha="1" colorSpace="deviceRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="B2z-gc-se3" kind="relationship" relationship="rootViewController" id="Anu-z6-3kk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJQ-kZ-pOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122" y="123"/>
+        </scene>
+        <!--Wedding List View Controller-->
+        <scene sceneID="fai-VZ-tkG">
+            <objects>
+                <viewController id="B2z-gc-se3" customClass="WeddingListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hLe-Xe-G0v">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tiI-2a-hOK">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S6L-G3-HE6">
+                            <rect key="frame" x="71" y="6" width="177" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="20"/>
+                            <state key="normal" title="Listado de bodas">
+                                <color key="titleColor" red="0.25098040700000002" green="0.30196079609999998" blue="0.3058823645" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" title="Cerrar" style="plain" id="HZg-Ie-Ktk">
+                            <connections>
+                                <action selector="dismissView:" destination="B2z-gc-se3" id="75Z-VC-X9A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJf-31-0Jg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="465" y="123"/>
+        </scene>
     </scenes>
     <resources>
         <image name="homeBG.png" width="320" height="480"/>
@@ -320,44 +372,6 @@
         <image name="showVideoBG.png" width="480" height="320"/>
         <image name="showVideoBGVertical.png" width="320" height="480"/>
     </resources>
-    <classes>
-        <class className="DetailSongViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailSongViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-                <relationship kind="action" name="playTrendingVideo:"/>
-                <relationship kind="action" name="playYouTubeVideo:"/>
-                <relationship kind="outlet" name="groupLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="groupName" candidateClass="NSString"/>
-                <relationship kind="outlet" name="identifySong" candidateClass="NSString"/>
-                <relationship kind="outlet" name="landscapeBackgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lowQualitySwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="portraitBackgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleSongLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleSongName" candidateClass="NSString"/>
-                <relationship kind="outlet" name="videoContainerView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="GlobalSongsList" superclassName="TTUITableViewZoomController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlobalSongsList.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-            </relationships>
-        </class>
-        <class className="InitialHome" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InitialHome.h"/>
-            <relationships>
-                <relationship kind="outlet" name="landscapeBackgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="portraitBackgroundImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TTUITableViewZoomController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTUITableViewZoomController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
