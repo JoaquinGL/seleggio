@@ -15,6 +15,7 @@
 @interface WeddingListViewController()
 {
     WeddingListModel *weddingListModel;
+    DKLiveBlurView *backgroundView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -35,7 +36,10 @@
     return self;
 }
 
-- (NSMutableArray *)items {
+- (NSMutableArray *)itemsFiltered {
+    
+    NSMutableArray *_itemsFiltered = nil;
+    
     if (_items == nil) {
         _items = [NSMutableArray new];
         
@@ -44,13 +48,25 @@
         
         for(int i=0; i<[weddingListModel getNumberOfRegisters]; i++)
         {
-            [_items addObject:[weddingListModel getIDFromIndex:i]];
+            //[_items addObject:[weddingListModel getIDFromIndex:i]];
+            
+            id idWedding = [weddingListModel getIDFromIndex:i];
+            
+            NSString *nameOfWedding = [weddingListModel getNameFromIDWedding:idWedding];
+            
+           
+            [_items addObject:nameOfWedding];
+            
         }
-        
-        
-        
+       
     }
-    return _items;
+    
+    _itemsFiltered = [NSMutableArray new];
+    
+    [_itemsFiltered setArray:[[NSSet setWithArray:_items] allObjects]];
+    
+    
+    return _itemsFiltered;
 }
 
 - (void)viewDidLoad {
@@ -63,7 +79,8 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed: kDKTableViewMainBackgroundImageFileName]];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    if ( !self.tableView )
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
@@ -72,7 +89,7 @@
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     
-    DKLiveBlurView *backgroundView = [[DKLiveBlurView alloc] initWithFrame: self.view.bounds];
+    backgroundView = [[DKLiveBlurView alloc] initWithFrame: self.view.bounds];
     
     backgroundView.originalImage = [UIImage imageNamed:kDKTableViewMainBackgroundImageFileName];
     backgroundView.tableView = self.tableView;
@@ -103,7 +120,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
-    int number = [weddingListModel getNumberOfRegisters];
+    int number = [[self itemsFiltered] count];
     
     return number + 2;
 }
@@ -119,11 +136,9 @@
     }
     
     if (indexPath.row > 1) {
-        NSString *idWedding = [weddingListModel getIDFromIndex:indexPath.row - 2];
+        NSString *idWedding = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
         
-        
-        
-        cell.textLabel.text = [weddingListModel getNameFromIDWedding:idWedding];
+        cell.textLabel.text = idWedding;
     } else {
         cell.textLabel.text = @"";
     }
@@ -135,6 +150,12 @@
 
 - (IBAction)dismissView:(id)sender
 {
+    weddingListModel = nil;
+    self.tableView.dataSource = nil;
+    self.tableView.delegate = nil;
+    self.tableView = nil;
+    backgroundView.tableView = nil;
+    backgroundView = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

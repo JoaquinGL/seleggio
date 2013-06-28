@@ -12,7 +12,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* dbPath = [docPath stringByAppendingPathComponent:@"songsList.sqlite"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    // Check if the database is existed.
+    if(![fm fileExistsAtPath:dbPath])
+    {
+        // If database is not existed, copy from the database template in the bundle
+        NSString* dbTemplatePath = [[NSBundle mainBundle] pathForResource:@"songsList" ofType:@"sqlite"];
+        NSError* error = nil;
+        [fm copyItemAtPath:dbTemplatePath toPath:dbPath error:&error];
+        if(error){
+            NSLog(@"can't copy db.");
+        }
+    }
     return YES;
 }
 							

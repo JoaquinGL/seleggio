@@ -439,7 +439,7 @@ typedef enum {
     
     NSDictionary * weddingContent = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      guid,@"ID"
-                                     , weddingName, @"name"
+                                     , weddingName, @"Name"
                                      , self.idSong, @"IDSongDetail"
                                      , nil];
     

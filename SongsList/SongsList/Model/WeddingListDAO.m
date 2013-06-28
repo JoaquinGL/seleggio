@@ -41,17 +41,14 @@
 
 - (void) initDatabase
 {
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
     
-    dbPath = [[[ NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:@"songsList.sqlite"];
-    BOOL success = [ fileMgr fileExistsAtPath:dbPath ];
+        NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+       dbPath = [docPath stringByAppendingPathComponent:@"songsList.sqlite"];
+        
+        if (sqlite3_open([dbPath UTF8String], &songDB) != SQLITE_OK) {
+            NSLog(@"Failed to open database!");
+        }
     
-    if (!success)
-        NSLog(@"Cannot locate database file '%@'.", dbPath);
-    if (!(sqlite3_open([dbPath UTF8String], &songDB) == SQLITE_OK))
-    {
-        NSLog(@"An error has ocurred");
-    }
 }
 
 - ( NSMutableArray* ) getMyListWedding
@@ -105,9 +102,10 @@
         
         
         [self createEditableCopyOfDatabaseIfNeeded];
+        
         [self initDatabase];
         
-        const char *sql = "INSERT INTO weddingList (ID, name, IDSongDetail) VALUES(?,?,?)";
+        const char *sql = "INSERT INTO weddingList (ID, Name, IDSongDetail) VALUES(?,?,?)";
         
         sqlite3_stmt *sqlStatement;
         
@@ -117,8 +115,12 @@
         }
         
         
+        NSLog(@"%@",[weddingObject objectForKey:@"ID"]);
+        NSLog(@"%@",[weddingObject objectForKey:@"Name"]);
+        NSLog(@"%@",[weddingObject objectForKey:@"IDSongDetail"]);
+        
         sqlite3_bind_text(sqlStatement, 1, [[weddingObject objectForKey:@"ID"] UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(sqlStatement, 2, [[weddingObject objectForKey:@"name"] UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(sqlStatement, 2, [[weddingObject objectForKey:@"Name"] UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(sqlStatement, 3, [[weddingObject objectForKey:@"IDSongDetail"] UTF8String], -1, SQLITE_TRANSIENT);
         
         
