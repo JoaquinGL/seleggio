@@ -100,21 +100,26 @@
 
 - (NSString *) getTitleWithId:(id) idSong
 {
+    [self initSongsContent];
+    
     return (( SongList* )[songsContentDictionary objectForKey:idSong]).title;
 }
 
 - (NSString *) getGroupWithId:(id) idSong
 {
+    [self initSongsContent];
     return (( SongList* )[songsContentDictionary objectForKey:idSong]).group;
 }
 
 - (NSString *) getVideoWithId:(id) idSong
 {
+    [self initSongsContent];
     return (( SongList* )[songsContentDictionary objectForKey:idSong]).videoURL;
 }
 
 - (NSString *) getImageWithId:(id) idSong
 {
+    [self initSongsContent];
     return (( SongList* )[songsContentDictionary objectForKey:idSong]).imageURL;
 }
 

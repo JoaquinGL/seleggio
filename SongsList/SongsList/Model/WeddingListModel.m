@@ -66,8 +66,6 @@
     return returnValue;
 }
 
-
-
 - ( id ) getNameFromIDWedding: ( id )idWedding
 {
     [self initWeddingListDAO];
@@ -89,5 +87,13 @@
     
     return [ weddingListDAO getNumberOfRegisters ];
 }
+
+- ( NSMutableArray * ) getTheSongsFormListWedding: (id) idWedding
+{
+    [ self initWeddingListDAO ];
+    
+    return [weddingListDAO getTheSongsFormListWedding:idWedding];
+}
+
 
 @end

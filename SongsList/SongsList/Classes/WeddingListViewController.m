@@ -9,6 +9,7 @@
 #import "WeddingListViewController.h"
 #import "DKLiveBlurView.h"
 #import "WeddingListModel.h"
+#import "DetailWeddingViewController.h"
 
 #define kDKTableViewMainBackgroundImageFileName @"ListadoBG.png"
 
@@ -16,9 +17,10 @@
 {
     WeddingListModel *weddingListModel;
     DKLiveBlurView *backgroundView;
+    IBOutlet UITableViewCell *cell;
 }
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *items;
 
 @end
@@ -127,7 +129,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -136,9 +138,9 @@
     }
     
     if (indexPath.row > 1) {
-        NSString *idWedding = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
+        NSString *weddingName = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
         
-        cell.textLabel.text = idWedding;
+        cell.textLabel.text = weddingName;
     } else {
         cell.textLabel.text = @"";
     }
@@ -147,6 +149,25 @@
     
     return cell;
 }
+
+
+- ( void )tableView: ( UITableView* )tableView didSelectRowAtIndexPath: ( NSIndexPath* )indexPath
+{
+    //NSString *idSong;
+    
+    if (indexPath.row >1)
+    {
+        NSString *weddingName = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
+        
+        DetailWeddingViewController *detailViewController = [[DetailWeddingViewController alloc] init];
+        
+        detailViewController.nameOfWedding = weddingName;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
+    
+}
+
 
 - (IBAction)dismissView:(id)sender
 {

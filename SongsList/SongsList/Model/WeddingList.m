@@ -12,7 +12,7 @@
 @synthesize
     weddingID = weddingID_,
     name = name_,
-    IDSongDetail = IDSongDetail_;
-
+    IDSongDetail = IDSongDetail_,
+    order = order_;
 
 @end

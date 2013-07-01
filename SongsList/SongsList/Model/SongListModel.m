@@ -31,21 +31,29 @@
 
 - ( id )getTitleWithId: ( id )idSong
 {
+    [ self initSongsListDAO ];
+    
     return [ songListDAO getTitleWithId: idSong ];
 }
 
 - ( id )getGroupWithId: ( id )idSong
 {
+    [ self initSongsListDAO ];
+
     return [ songListDAO getGroupWithId: idSong ];
 }
 
 - ( id )getVideoWithId: ( id )idSong
 {
+    [ self initSongsListDAO ];
+
     return [ songListDAO getVideoWithId: idSong ];
 }
 
 - ( id )getImageWithId: ( id )idSong
 {
+    [ self initSongsListDAO ];
+
     return [ songListDAO getImageWithId: idSong ];
 }
 

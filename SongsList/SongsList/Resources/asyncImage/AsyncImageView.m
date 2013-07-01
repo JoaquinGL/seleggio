@@ -199,9 +199,9 @@ NSString *const AsyncImageErrorKey = @"error";
 		else
 		{
 			//clean up
-			[self performSelectorOnMainThread:@selector(cacheImage:)
-								   withObject:nil
-								waitUntilDone:YES];
+//			[self performSelectorOnMainThread:@selector(cacheImage:)
+//								   withObject:nil
+//								waitUntilDone:YES];
 		}
 	}
 }

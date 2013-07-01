@@ -36,6 +36,7 @@
 		48A3F0C4177C2EFD00D71378 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 48A3F0C2177C2EFD00D71378 /* 37x-Checkmark.png */; };
 		48A3F0C5177C2EFD00D71378 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48A3F0C3177C2EFD00D71378 /* 37x-Checkmark@2x.png */; };
 		48A3F0CA177C5FEF00D71378 /* songsList.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 48A3F0C9177C5FEF00D71378 /* songsList.sqlite */; };
+		48A3F0CD177DE92C00D71378 /* DetailWeddingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A3F0CC177DE92C00D71378 /* DetailWeddingViewController.m */; };
 		48A8056B17687D3D0018BD97 /* InitialHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A8056A17687D3D0018BD97 /* InitialHome.m */; };
 		48A8057017688FD80018BD97 /* tableBGLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48A8056E17688FD80018BD97 /* tableBGLandscape@2x.png */; };
 		48A8057117688FD80018BD97 /* tableBGLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 48A8056F17688FD80018BD97 /* tableBGLandscape.png */; };
@@ -76,6 +77,7 @@
 		48C5A5D0176795B6005097A2 /* Existence-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48C5A5CF176795B6005097A2 /* Existence-Light.otf */; };
 		48C5A5D317679C47005097A2 /* showVideoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C5A5D117679C47005097A2 /* showVideoBG.png */; };
 		48C5A5D417679C47005097A2 /* showVideoBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C5A5D217679C47005097A2 /* showVideoBG@2x.png */; };
+		48CE4C981781790600BB7443 /* ATSDragToReorderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */; };
 		48F86B221765B7030064F488 /* DetailSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F86B211765B7030064F488 /* DetailSongViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,8 @@
 		48A3F0C2177C2EFD00D71378 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		48A3F0C3177C2EFD00D71378 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		48A3F0C9177C5FEF00D71378 /* songsList.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = songsList.sqlite; path = SongsList/Resources/songsList.sqlite; sourceTree = "<group>"; };
+		48A3F0CB177DE92C00D71378 /* DetailWeddingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeddingViewController.h; sourceTree = "<group>"; };
+		48A3F0CC177DE92C00D71378 /* DetailWeddingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeddingViewController.m; sourceTree = "<group>"; };
 		48A8056917687D3D0018BD97 /* InitialHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialHome.h; sourceTree = "<group>"; };
 		48A8056A17687D3D0018BD97 /* InitialHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialHome.m; sourceTree = "<group>"; };
 		48A8056E17688FD80018BD97 /* tableBGLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableBGLandscape@2x.png"; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		48C5A5CF176795B6005097A2 /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
 		48C5A5D117679C47005097A2 /* showVideoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showVideoBG.png; sourceTree = "<group>"; };
 		48C5A5D217679C47005097A2 /* showVideoBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "showVideoBG@2x.png"; sourceTree = "<group>"; };
+		48CE4C961781790600BB7443 /* ATSDragToReorderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSDragToReorderTableViewController.h; sourceTree = "<group>"; };
+		48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSDragToReorderTableViewController.m; sourceTree = "<group>"; };
 		48F86B201765B7030064F488 /* DetailSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSongViewController.h; sourceTree = "<group>"; };
 		48F86B211765B7030064F488 /* DetailSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSongViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +276,8 @@
 				48F86B211765B7030064F488 /* DetailSongViewController.m */,
 				487356A51777AF4E00BD73CF /* WeddingListViewController.h */,
 				487356A61777AF4E00BD73CF /* WeddingListViewController.m */,
+				48A3F0CB177DE92C00D71378 /* DetailWeddingViewController.h */,
+				48A3F0CC177DE92C00D71378 /* DetailWeddingViewController.m */,
 				487FF6BD1765C3D00079452D /* SongCell.h */,
 				487FF6BE1765C3D00079452D /* SongCell.m */,
 				487FF6D91765E7620079452D /* Defines.h */,
@@ -284,6 +292,7 @@
 		482920E417623B4000649FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				48CE4C951781790600BB7443 /* OrderCell */,
 				48A3F0BE177C2D3A00D71378 /* MBProgressHUD */,
 				48AB87DD17734E150046076C /* OverlayMenu */,
 				48A805791769BD910018BD97 /* asyncImage */,
@@ -424,6 +433,15 @@
 			path = font;
 			sourceTree = "<group>";
 		};
+		48CE4C951781790600BB7443 /* OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				48CE4C961781790600BB7443 /* ATSDragToReorderTableViewController.h */,
+				48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */,
+			);
+			path = OrderCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -546,6 +564,8 @@
 				4842E34A177AD25200F63E3A /* WeddingListModel.m in Sources */,
 				4842E34D177AD3C000F63E3A /* WeddingListDAO.m in Sources */,
 				48A3F0C1177C2D3A00D71378 /* MBProgressHUD.m in Sources */,
+				48A3F0CD177DE92C00D71378 /* DetailWeddingViewController.m in Sources */,
+				48CE4C981781790600BB7443 /* ATSDragToReorderTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

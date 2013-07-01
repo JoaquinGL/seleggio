@@ -34,6 +34,8 @@
     Reachability *reachability;
     WeddingListModel *weddingListModel;
     QBKOverlayMenuView *_qbkOverlayMenuView;
+    
+    IBOutlet UILabel *weddingNameLabel;
 }
 
 @property (nonatomic, weak) IBOutlet UISwitch *lowQualitySwitch;
@@ -78,6 +80,8 @@ typedef enum {
     
     weddingListNameAlert = nil;
     
+    weddingNameLabel = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super didReceiveMemoryWarning];
@@ -114,8 +118,23 @@ typedef enum {
     [self initMenu];
     
     saveWeddingName = NO;
+    
+    [self initWeddingName];
+    
+}
+
+- (void) initWeddingName
+{
+    if (!weddingListModel)
+        weddingListModel = [[WeddingListModel alloc] init];
+    
+    weddingName = [weddingListModel getTheLastWeddingName];
+    
+    if (weddingName)
+        weddingNameLabel.text = weddingName;
 
 }
+
 
 - (void) initNotifications
 {
@@ -348,8 +367,7 @@ typedef enum {
 {
     NSLog(@"Botón pulsado con índice: %d", index);
     
-    if (!weddingListModel)
-        weddingListModel = [[WeddingListModel alloc] init];
+   
     
     switch (index) {
         case optionsList:
@@ -373,7 +391,7 @@ typedef enum {
             
             // Si El listado de bodas esta Vacio, hay que forzar a escribir el nombre de la boda.
             
-            weddingName = [weddingListModel getTheLastWeddingName];
+            
             
             if (! weddingName)
                 [self showPrompt];
@@ -489,6 +507,9 @@ typedef enum {
     
 	// Show the HUD while the provided method executes in a new thread
 	[HUD showWhileExecuting:@selector(finishNotification) onTarget:self withObject:nil animated:YES];
+    
+    if (weddingName)
+        weddingNameLabel.text = weddingName;
 }
 
 - (void)finishNotification {

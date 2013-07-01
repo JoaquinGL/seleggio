@@ -17,4 +17,6 @@
 - ( id )getTheLastWeddingName;
 - ( NSInteger ) getNumberOfRegisters;
 
+- ( NSMutableArray * ) getTheSongsFormListWedding: (id) idWedding;
+
 @end

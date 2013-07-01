@@ -19,4 +19,6 @@
 
 - ( id ) getNameFromIDWedding: ( id )idWedding;
 
+- ( NSMutableArray * ) getTheSongsFormListWedding: (id) idWedding;
+
 @end

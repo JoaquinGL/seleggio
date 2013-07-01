@@ -57,7 +57,7 @@
         
         [self initDatabase];
         
-        const char *sql = "SELECT ID, Name, IDSongDetail FROM weddingList";
+        const char *sql = "SELECT ID, Name, IDSongDetail, OrderSong FROM weddingList";
         sqlite3_stmt *sqlStatement;
         
         if(sqlite3_prepare(songDB, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
@@ -71,7 +71,7 @@
             weddingList.weddingID = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 0)];
             weddingList.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 1)];
             weddingList.IDSongDetail = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 2)];
-            
+            weddingList.order = [[NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 3)] intValue];
             [weddingListContentDictionay setObject: weddingList
                                             forKey: weddingList.weddingID];
             
@@ -105,7 +105,7 @@
         
         [self initDatabase];
         
-        const char *sql = "INSERT INTO weddingList (ID, Name, IDSongDetail) VALUES(?,?,?)";
+        const char *sql = "INSERT INTO weddingList (ID, Name, IDSongDetail, OrderSong) VALUES(?,?,?,?)";
         
         sqlite3_stmt *sqlStatement;
         
@@ -123,7 +123,8 @@
         sqlite3_bind_text(sqlStatement, 2, [[weddingObject objectForKey:@"Name"] UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(sqlStatement, 3, [[weddingObject objectForKey:@"IDSongDetail"] UTF8String], -1, SQLITE_TRANSIENT);
         
-        
+      //  NSInteger order = -1;
+         sqlite3_bind_text(sqlStatement, 4, [@"-1" UTF8String], -1, SQLITE_TRANSIENT);
         
         if(SQLITE_DONE != sqlite3_step(sqlStatement))
             NSLog(@"An exception occured: Insertar en la BBDD");
@@ -162,9 +163,31 @@
     NSString *idWedding = ( ( WeddingList* ) [ weddingContent objectAtIndex:index ]).weddingID;
     
     return idWedding;
-
-
 }
+
+- ( NSMutableArray * ) getTheSongsFormListWedding: (id) idWedding
+{
+    
+    NSMutableArray *songList = [[NSMutableArray alloc] init];
+    
+    [self initWeddingContent];
+    
+    WeddingList *list;
+    
+    for (int i = 0; i<[weddingContent count]; i++)
+    {
+        
+        list = [weddingContent objectAtIndex:i];
+        
+        if ([list.name isEqual:idWedding])
+        {
+            [songList addObject:list.IDSongDetail];
+        }
+    }
+
+    return songList;
+}
+
 
 - ( id ) getNameFromIDWedding: ( id )idWedding
 {

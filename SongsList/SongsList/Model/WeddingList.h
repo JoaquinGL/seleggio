@@ -13,10 +13,12 @@
     NSString* weddingID_;
     NSString* name_;
     NSString* IDSongDetail_;
+    NSInteger order_;
 }
 
 @property ( nonatomic, retain ) NSString* weddingID;
 @property ( nonatomic, retain ) NSString* name;
 @property ( nonatomic, retain ) NSString* IDSongDetail;
+@property ( nonatomic, assign ) NSInteger order;
 
 @end
