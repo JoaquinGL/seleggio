@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QBKOverlayMenuView.h"
 #import "MBProgressHUD.h"
 
-@interface DetailSongViewController : UIViewController<QBKOverlayMenuViewDelegate, MBProgressHUDDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+#import "RESideMenu.h"
+
+#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+@interface DetailSongViewController : UIViewController <  MBProgressHUDDelegate, UIAlertViewDelegate, UITextFieldDelegate >
 
 {
     NSString *songName_;
@@ -23,6 +26,8 @@
 @property (nonatomic, retain) IBOutlet NSString * videoURL;
 @property (nonatomic, retain) IBOutlet NSString * groupName;
 @property (nonatomic, retain) IBOutlet NSString * idSong;
+
+@property (strong, readwrite, nonatomic) RESideMenu *sideMenu;
 
 - (void) setTitleViewInit:(NSString *)titleSongName;
 - (void) setURLVideo:(NSString *)identify;

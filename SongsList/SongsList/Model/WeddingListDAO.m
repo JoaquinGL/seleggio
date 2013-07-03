@@ -96,6 +96,37 @@
     }
 }
 
+
+- (void) deleteFromDatabase:( id ) keyToDelete : (id) weddingName{
+    
+    [self createEditableCopyOfDatabaseIfNeeded];
+    
+    [self initDatabase];
+    
+    sqlite3_stmt *delete_statment = NULL;
+    
+	if (delete_statment == nil) {
+		const char *sql = "DELETE FROM weddingList WHERE IDSongDetail=? AND Name=?";
+		if (sqlite3_prepare_v2(songDB, sql, -1, &delete_statment, NULL) != SQLITE_OK) {
+			NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(songDB));
+		}
+	}
+	
+    sqlite3_bind_text(delete_statment, 1, [keyToDelete UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(delete_statment, 2, [weddingName UTF8String], -1, SQLITE_TRANSIENT);
+    
+	int success = sqlite3_step(delete_statment);
+	
+	if (success != SQLITE_DONE) {
+		 NSLog( @"Error: failed to save priority with message '%s'.",sqlite3_errmsg(songDB));
+	}
+	
+	sqlite3_reset(delete_statment);
+    
+    sqlite3_close(songDB);
+}
+
+
 - (void) insertWeding:(NSDictionary *) weddingObject
 {
     @try {
@@ -122,9 +153,7 @@
         sqlite3_bind_text(sqlStatement, 1, [[weddingObject objectForKey:@"ID"] UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(sqlStatement, 2, [[weddingObject objectForKey:@"Name"] UTF8String], -1, SQLITE_TRANSIENT);
         sqlite3_bind_text(sqlStatement, 3, [[weddingObject objectForKey:@"IDSongDetail"] UTF8String], -1, SQLITE_TRANSIENT);
-        
-      //  NSInteger order = -1;
-         sqlite3_bind_text(sqlStatement, 4, [@"-1" UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(sqlStatement, 4, [@"-1" UTF8String], -1, SQLITE_TRANSIENT);
         
         if(SQLITE_DONE != sqlite3_step(sqlStatement))
             NSLog(@"An exception occured: Insertar en la BBDD");

@@ -160,19 +160,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SongsList/Classes/DetailSongViewController.m"
-         timestampString = "394370464.087317"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "404"
-         endingLineNumber = "404"
-         landmarkName = "-overlayMenuView:didActivateAdditionalButtonWithIndex:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -189,25 +176,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SongsList/Classes/DetailSongViewController.m"
-         timestampString = "394370464.087317"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "456"
-         endingLineNumber = "456"
-         landmarkName = "-saveWeddingName"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "SongsList/Model/WeddingListDAO.m"
-         timestampString = "394360010.669763"
+         timestampString = "394471951.137576"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "-insertWeding:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -268,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SongsList/Model/WeddingListDAO.m"
-         timestampString = "394366629.724925"
+         timestampString = "394385851.288906"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "171"
-         endingLineNumber = "171"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
          landmarkName = "-getTheSongsFormListWedding:"
          landmarkType = "5">
       </FileBreakpoint>

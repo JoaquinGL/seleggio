@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ATSDragToReorderTableViewController.h"
 
-@interface DetailWeddingViewController : ATSDragToReorderTableViewController
+@interface DetailWeddingViewController : ATSDragToReorderTableViewController<UITableViewDelegate>
 {
     NSMutableArray *arrayOfItems;
-    
     NSString *nameOfWedding_;
 }
 

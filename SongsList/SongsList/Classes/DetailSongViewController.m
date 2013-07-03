@@ -11,7 +11,7 @@
 #import "Defines.h"
 #import "Animation.h"
 #import "Reachability.h"
-#import "QBKOverlayMenuView.h"
+
 #import "WeddingListModel.h"
 
 
@@ -33,14 +33,14 @@
     NetworkStatus remoteHostStatus;
     Reachability *reachability;
     WeddingListModel *weddingListModel;
-    QBKOverlayMenuView *_qbkOverlayMenuView;
-    
-    IBOutlet UILabel *weddingNameLabel;
+
 }
 
 @property (nonatomic, weak) IBOutlet UISwitch *lowQualitySwitch;
 @property (nonatomic, weak) IBOutlet UIView *videoContainerView;
 @property (nonatomic, strong) XCDYouTubeVideoPlayerViewController *videoPlayerViewController;
+
+@property (nonatomic, retain) NSString *idWeddingList;
 
 typedef enum {
     optionsList,
@@ -72,7 +72,6 @@ typedef enum {
     portraitBackgroundImage = nil;
     landscapeBackgroundImage = nil;
     
-    _qbkOverlayMenuView = nil;
     
     self.idSong = nil;
     
@@ -80,7 +79,7 @@ typedef enum {
     
     weddingListNameAlert = nil;
     
-    weddingNameLabel = nil;
+  
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -115,11 +114,13 @@ typedef enum {
     
     [self initNetwork];
     
-    [self initMenu];
+    
     
     saveWeddingName = NO;
     
     [self initWeddingName];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
     
 }
 
@@ -130,8 +131,7 @@ typedef enum {
     
     weddingName = [weddingListModel getTheLastWeddingName];
     
-    if (weddingName)
-        weddingNameLabel.text = weddingName;
+
 
 }
 
@@ -154,19 +154,6 @@ typedef enum {
                                                object:nil];
 }
 
-- (void) initMenu
-{
-    QBKOverlayMenuViewOffset offset;
-    offset.bottomOffset = 44;
-    
-    _qbkOverlayMenuView = [[QBKOverlayMenuView alloc] initWithDelegate:self position:kQBKOverlayMenuViewPositionTop offset:offset];
-    [_qbkOverlayMenuView setParentView:[self view]];
-    
-    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"selectList-button.png"] index:0];
-    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"cross-button.png"] index:1];
-    [_qbkOverlayMenuView addButtonWithImage:[UIImage imageNamed:@"rw-button.png"] index:2];
-    
-}
 
 
 
@@ -362,53 +349,6 @@ typedef enum {
     
 }
 
-#pragma mark - Métodos de QBKOverlayMenuViewDelegate
-- (void)overlayMenuView:(QBKOverlayMenuView *)overlayMenuView didActivateAdditionalButtonWithIndex:(NSInteger)index
-{
-    NSLog(@"Botón pulsado con índice: %d", index);
-    
-   
-    
-    switch (index) {
-        case optionsList:
-            {
-                [self showPrompt];
-            
-                [_qbkOverlayMenuView mainButtonPressed];
-            }
-            break;
-            
-        case removeFromList:
-            // de la lista que actualmente esta.
-            break;
-            
-        case addToList:
-        {
-            NSLog(@"-> SongID:%@ ",self.idSong);
-            NSLog(@"-> SongName:%@ ",self.songName);
-            NSLog(@"-> SongGroup:%@ ",self.groupName);
-            
-            
-            // Si El listado de bodas esta Vacio, hay que forzar a escribir el nombre de la boda.
-            
-            
-            
-            if (! weddingName)
-                [self showPrompt];
-            else
-            {
-                [self saveWeddingName];
-            }
-            
-            [_qbkOverlayMenuView mainButtonPressed];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
 
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -453,19 +393,30 @@ typedef enum {
 
 - (void) saveWeddingName
 {
-    NSString *guid = [self GetUUID];
+   // NSString *guid = [self GetUUID];
+    
+    self.idWeddingList = [self GetUUID];
     
     NSDictionary * weddingContent = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     guid,@"ID"
+                                     self.idWeddingList,@"ID"
                                      , weddingName, @"Name"
                                      , self.idSong, @"IDSongDetail"
                                      , nil];
     
     [ weddingListModel insertWeding: weddingContent ];
     
-    [self showModalNotification];
+    [self showModalNotificationWithText:@"Guardado"];
 
 }
+
+
+- (void) removeSong
+{
+    [weddingListModel deleteSong:self.idSong : weddingName];
+    
+    [self showModalNotificationWithText:@"Borrado"];
+}
+
 
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -489,7 +440,7 @@ typedef enum {
     saveWeddingName = (buttonIndex == 1);
 }
 
-- (void) showModalNotification
+- (void) showModalNotificationWithText:( NSString *) notification
 {
     MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:HUD];
@@ -503,13 +454,12 @@ typedef enum {
 	
     HUD.mode = MBProgressHUDModeCustomView;
     
-    HUD.labelText = @"Guardado";
+    HUD.labelText = notification;
     
 	// Show the HUD while the provided method executes in a new thread
 	[HUD showWhileExecuting:@selector(finishNotification) onTarget:self withObject:nil animated:YES];
     
-    if (weddingName)
-        weddingNameLabel.text = weddingName;
+  
 }
 
 - (void)finishNotification {
@@ -529,14 +479,68 @@ typedef enum {
 }
 
 
-- (void)didPerformUnfoldActionInOverlayMenuView:(QBKOverlayMenuView *)overlaymenuView
+
+#pragma mark ResideMenu
+
+
+- (void)showMenu
 {
-    NSLog(@"Menú DESPLEGADO");
+    if (!_sideMenu) {
+        
+       
+               
+        NSString *title;
+        (weddingName) ? (title = [NSString stringWithFormat:@"Añadir canción"] ) : ( title = [NSString stringWithFormat:@"Añadir a nueva lista"] );
+        
+        
+        RESideMenuItem *addItem = [[RESideMenuItem alloc] initWithTitle:title action:^(RESideMenu *menu, RESideMenuItem *item) {
+            [menu hide];
+
+            if (! weddingName)
+                [self showPrompt];
+            else
+            {
+                [self saveWeddingName];
+            }
+            
+           
+        }];
+        
+        title = [NSString stringWithFormat:@"Eliminar canción"];
+        
+        RESideMenuItem *deleteItem = [[RESideMenuItem alloc] initWithTitle:title action:^(RESideMenu *menu, RESideMenuItem *item) {
+            [menu hide];
+            
+            [self removeSong];
+        }];
+        
+        RESideMenuItem *addToList = [[RESideMenuItem alloc] initWithTitle:@"Añadir a ..." action:^(RESideMenu *menu, RESideMenuItem *item) {
+            [menu hide];
+            [self showPrompt];
+        }];
+
+        
+        (weddingName) ? (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem, deleteItem, addToList]]) : (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem]]);
+        
+        
+        _sideMenu.verticalOffset = IS_WIDESCREEN ? 110 : 76;
+        _sideMenu.hideStatusBarArea = [self OSVersion] < 7;
+        (weddingName) ? (_sideMenu.titleOfWedding = [NSString stringWithString:weddingName]) : (_sideMenu.titleOfWedding = @"Nueva Lista de Bodas");
+
+    }
+    
+    [_sideMenu show];
 }
 
-- (void)didPerformFoldActionInOverlayMenuView:(QBKOverlayMenuView *)overlaymenuView
+
+- (NSInteger)OSVersion
 {
-    NSLog(@"Menú REPLEGADO");
+    static NSUInteger _deviceSystemMajorVersion = -1;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _deviceSystemMajorVersion = [[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue];
+    });
+    return _deviceSystemMajorVersion;
 }
 
 

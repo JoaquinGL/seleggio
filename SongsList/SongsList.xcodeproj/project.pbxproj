@@ -44,7 +44,6 @@
 		48A80576176898440018BD97 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A80575176898440018BD97 /* Reachability.m */; };
 		48A80578176898810018BD97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A80577176898810018BD97 /* SystemConfiguration.framework */; };
 		48A8057C1769BD910018BD97 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A8057B1769BD910018BD97 /* AsyncImageView.m */; };
-		48AB87E017734E150046076C /* QBKOverlayMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48AB87DF17734E150046076C /* QBKOverlayMenuView.m */; };
 		48AB87EA177353620046076C /* main-button-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 48AB87E2177353620046076C /* main-button-left.png */; };
 		48AB87EB177353620046076C /* main-button-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48AB87E3177353620046076C /* main-button-left@2x.png */; };
 		48AB87EC177353620046076C /* main-button-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 48AB87E4177353620046076C /* main-button-up.png */; };
@@ -78,6 +77,13 @@
 		48C5A5D317679C47005097A2 /* showVideoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C5A5D117679C47005097A2 /* showVideoBG.png */; };
 		48C5A5D417679C47005097A2 /* showVideoBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48C5A5D217679C47005097A2 /* showVideoBG@2x.png */; };
 		48CE4C981781790600BB7443 /* ATSDragToReorderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */; };
+		48CE4CA81782D08700BB7443 /* AccelerationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4C9B1782D08700BB7443 /* AccelerationAnimation.m */; };
+		48CE4CA91782D08700BB7443 /* Evaluate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4C9D1782D08700BB7443 /* Evaluate.m */; };
+		48CE4CAA1782D08700BB7443 /* REBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4C9F1782D08700BB7443 /* REBackgroundView.m */; };
+		48CE4CAB1782D08700BB7443 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA11782D08700BB7443 /* RESideMenu.m */; };
+		48CE4CAC1782D08700BB7443 /* RESideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA31782D08700BB7443 /* RESideMenuCell.m */; };
+		48CE4CAD1782D08700BB7443 /* RESideMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA51782D08700BB7443 /* RESideMenuItem.m */; };
+		48CE4CAE1782D08700BB7443 /* UIWindow+RESideMenuExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA71782D08700BB7443 /* UIWindow+RESideMenuExtensions.m */; };
 		48F86B221765B7030064F488 /* DetailSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F86B211765B7030064F488 /* DetailSongViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -138,8 +144,6 @@
 		48A80577176898810018BD97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		48A8057A1769BD910018BD97 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		48A8057B1769BD910018BD97 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
-		48AB87DE17734E150046076C /* QBKOverlayMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBKOverlayMenuView.h; sourceTree = "<group>"; };
-		48AB87DF17734E150046076C /* QBKOverlayMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBKOverlayMenuView.m; sourceTree = "<group>"; };
 		48AB87E2177353620046076C /* main-button-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-button-left.png"; sourceTree = "<group>"; };
 		48AB87E3177353620046076C /* main-button-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-button-left@2x.png"; sourceTree = "<group>"; };
 		48AB87E4177353620046076C /* main-button-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-button-up.png"; sourceTree = "<group>"; };
@@ -178,6 +182,20 @@
 		48C5A5D217679C47005097A2 /* showVideoBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "showVideoBG@2x.png"; sourceTree = "<group>"; };
 		48CE4C961781790600BB7443 /* ATSDragToReorderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSDragToReorderTableViewController.h; sourceTree = "<group>"; };
 		48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSDragToReorderTableViewController.m; sourceTree = "<group>"; };
+		48CE4C9A1782D08700BB7443 /* AccelerationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerationAnimation.h; sourceTree = "<group>"; };
+		48CE4C9B1782D08700BB7443 /* AccelerationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerationAnimation.m; sourceTree = "<group>"; };
+		48CE4C9C1782D08700BB7443 /* Evaluate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Evaluate.h; sourceTree = "<group>"; };
+		48CE4C9D1782D08700BB7443 /* Evaluate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Evaluate.m; sourceTree = "<group>"; };
+		48CE4C9E1782D08700BB7443 /* REBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REBackgroundView.h; sourceTree = "<group>"; };
+		48CE4C9F1782D08700BB7443 /* REBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REBackgroundView.m; sourceTree = "<group>"; };
+		48CE4CA01782D08700BB7443 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		48CE4CA11782D08700BB7443 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		48CE4CA21782D08700BB7443 /* RESideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenuCell.h; sourceTree = "<group>"; };
+		48CE4CA31782D08700BB7443 /* RESideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenuCell.m; sourceTree = "<group>"; };
+		48CE4CA41782D08700BB7443 /* RESideMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenuItem.h; sourceTree = "<group>"; };
+		48CE4CA51782D08700BB7443 /* RESideMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenuItem.m; sourceTree = "<group>"; };
+		48CE4CA61782D08700BB7443 /* UIWindow+RESideMenuExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RESideMenuExtensions.h"; sourceTree = "<group>"; };
+		48CE4CA71782D08700BB7443 /* UIWindow+RESideMenuExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RESideMenuExtensions.m"; sourceTree = "<group>"; };
 		48F86B201765B7030064F488 /* DetailSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSongViewController.h; sourceTree = "<group>"; };
 		48F86B211765B7030064F488 /* DetailSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSongViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -292,9 +310,9 @@
 		482920E417623B4000649FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				48CE4C991782D08700BB7443 /* RESideMenu */,
 				48CE4C951781790600BB7443 /* OrderCell */,
 				48A3F0BE177C2D3A00D71378 /* MBProgressHUD */,
-				48AB87DD17734E150046076C /* OverlayMenu */,
 				48A805791769BD910018BD97 /* asyncImage */,
 				48C5A5CE176795B6005097A2 /* font */,
 				482920F11762476700649FDC /* global */,
@@ -378,15 +396,6 @@
 			path = asyncImage;
 			sourceTree = "<group>";
 		};
-		48AB87DD17734E150046076C /* OverlayMenu */ = {
-			isa = PBXGroup;
-			children = (
-				48AB87DE17734E150046076C /* QBKOverlayMenuView.h */,
-				48AB87DF17734E150046076C /* QBKOverlayMenuView.m */,
-			);
-			path = OverlayMenu;
-			sourceTree = "<group>";
-		};
 		48AB87E1177353620046076C /* qbkmenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +449,27 @@
 				48CE4C971781790600BB7443 /* ATSDragToReorderTableViewController.m */,
 			);
 			path = OrderCell;
+			sourceTree = "<group>";
+		};
+		48CE4C991782D08700BB7443 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				48CE4C9A1782D08700BB7443 /* AccelerationAnimation.h */,
+				48CE4C9B1782D08700BB7443 /* AccelerationAnimation.m */,
+				48CE4C9C1782D08700BB7443 /* Evaluate.h */,
+				48CE4C9D1782D08700BB7443 /* Evaluate.m */,
+				48CE4C9E1782D08700BB7443 /* REBackgroundView.h */,
+				48CE4C9F1782D08700BB7443 /* REBackgroundView.m */,
+				48CE4CA01782D08700BB7443 /* RESideMenu.h */,
+				48CE4CA11782D08700BB7443 /* RESideMenu.m */,
+				48CE4CA21782D08700BB7443 /* RESideMenuCell.h */,
+				48CE4CA31782D08700BB7443 /* RESideMenuCell.m */,
+				48CE4CA41782D08700BB7443 /* RESideMenuItem.h */,
+				48CE4CA51782D08700BB7443 /* RESideMenuItem.m */,
+				48CE4CA61782D08700BB7443 /* UIWindow+RESideMenuExtensions.h */,
+				48CE4CA71782D08700BB7443 /* UIWindow+RESideMenuExtensions.m */,
+			);
+			path = RESideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,7 +587,6 @@
 				48A8056B17687D3D0018BD97 /* InitialHome.m in Sources */,
 				48A80576176898440018BD97 /* Reachability.m in Sources */,
 				48A8057C1769BD910018BD97 /* AsyncImageView.m in Sources */,
-				48AB87E017734E150046076C /* QBKOverlayMenuView.m in Sources */,
 				487356A71777AF4E00BD73CF /* DKLiveBlurView.m in Sources */,
 				487356A81777AF4E00BD73CF /* WeddingListViewController.m in Sources */,
 				4842E347177ACAC100F63E3A /* WeddingList.m in Sources */,
@@ -566,6 +595,13 @@
 				48A3F0C1177C2D3A00D71378 /* MBProgressHUD.m in Sources */,
 				48A3F0CD177DE92C00D71378 /* DetailWeddingViewController.m in Sources */,
 				48CE4C981781790600BB7443 /* ATSDragToReorderTableViewController.m in Sources */,
+				48CE4CA81782D08700BB7443 /* AccelerationAnimation.m in Sources */,
+				48CE4CA91782D08700BB7443 /* Evaluate.m in Sources */,
+				48CE4CAA1782D08700BB7443 /* REBackgroundView.m in Sources */,
+				48CE4CAB1782D08700BB7443 /* RESideMenu.m in Sources */,
+				48CE4CAC1782D08700BB7443 /* RESideMenuCell.m in Sources */,
+				48CE4CAD1782D08700BB7443 /* RESideMenuItem.m in Sources */,
+				48CE4CAE1782D08700BB7443 /* UIWindow+RESideMenuExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

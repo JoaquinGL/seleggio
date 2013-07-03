@@ -4,7 +4,9 @@
 //
 //  Created by Joaquin Giraldez on 28/06/13.
 //  Copyright (c) 2013 Joaquin Giraldez. All rights reserved.
-//
+
+
+// Limpiar la memoria
 
 #import "DetailWeddingViewController.h"
 #import "WeddingListModel.h"
@@ -14,6 +16,7 @@
 {
     IBOutlet UILabel *titleLabel;
     NSMutableArray *weddingListSongs;
+    WeddingListModel *weddingListModel;
 }
 
 @end
@@ -33,15 +36,12 @@
     titleLabel.text = self.nameOfWedding;
     self.navigationItem.titleView = titleLabel;
     
-    
+    [self.tableView setDelegate:self];
 
 	if (arrayOfItems == nil) {
-		
-		
-		
-		arrayOfItems = [NSMutableArray  new];
-		
-		
+    
+				arrayOfItems = [NSMutableArray  new];
+
 	}
     
     [self getNameOfSongsFromListWedding];
@@ -57,13 +57,13 @@
 - (void) getNameOfSongsFromListWedding
 {
     
-    WeddingListModel *weddingList = [[WeddingListModel alloc] init];
+    weddingListModel = [[WeddingListModel alloc] init];
     
     SongListModel *songList = [[SongListModel alloc] init];
     
     weddingListSongs = [NSMutableArray new];
     
-    weddingListSongs = [weddingList getTheSongsFormListWedding:self.nameOfWedding];
+    weddingListSongs = [weddingListModel getTheSongsFormListWedding:self.nameOfWedding];
     
     for(int i=0; i<[weddingListSongs count]; i++)
     {
@@ -127,6 +127,11 @@
 	[arrayOfItems removeObjectAtIndex:fromIndexPath.row];
 	[arrayOfItems insertObject:itemToMove atIndex:toIndexPath.row];
     
+    NSString *idToMove = [weddingListSongs objectAtIndex:fromIndexPath.row];
+    
+    [weddingListSongs removeObjectAtIndex:fromIndexPath.row];
+	[weddingListSongs insertObject:idToMove atIndex:toIndexPath.row];
+    
 }
 
 
@@ -137,6 +142,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Do whatever data deletion you need to do...
+        // Delete the row from the data source
+
+        
+        if(weddingListModel)
+        {
+            [weddingListModel deleteSong:[weddingListSongs objectAtIndex:indexPath.row] : self.nameOfWedding];
+        }
+        
+       // [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [tableView endUpdates];
+    
+    [arrayOfItems removeAllObjects];
+    
+    [self getNameOfSongsFromListWedding];
+    
+    [self.tableView reloadData];
+}
+
+
+
+
+
 
 
 #pragma mark -

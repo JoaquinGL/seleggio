@@ -21,4 +21,6 @@
 
 - ( NSMutableArray * ) getTheSongsFormListWedding: (id) idWedding;
 
+- (void) deleteFromDatabase:( id ) keyToDelete : (id) weddingName;
+
 @end

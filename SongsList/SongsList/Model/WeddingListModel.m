@@ -95,5 +95,13 @@
     return [weddingListDAO getTheSongsFormListWedding:idWedding];
 }
 
+- (void) deleteSong:( id ) keyToDelete : ( id ) weddingName
+{
+    [ self initWeddingListDAO];
+    
+    [weddingListDAO deleteFromDatabase:keyToDelete :weddingName];
+    
+}
+
 
 @end
