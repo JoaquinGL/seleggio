@@ -105,15 +105,31 @@
     
     sqlite3_stmt *delete_statment = NULL;
     
+    const char *sql = "DELETE FROM weddingList WHERE Name=?";
+    
+    if (keyToDelete)
+    {
+       sql = "DELETE FROM weddingList WHERE IDSongDetail=? AND Name=?";
+    }
+    
 	if (delete_statment == nil) {
-		const char *sql = "DELETE FROM weddingList WHERE IDSongDetail=? AND Name=?";
+		//const char *sql = "DELETE FROM weddingList WHERE IDSongDetail=? AND Name=?";
 		if (sqlite3_prepare_v2(songDB, sql, -1, &delete_statment, NULL) != SQLITE_OK) {
 			NSAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(songDB));
 		}
 	}
-	
-    sqlite3_bind_text(delete_statment, 1, [keyToDelete UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(delete_statment, 2, [weddingName UTF8String], -1, SQLITE_TRANSIENT);
+    
+	    
+    if (keyToDelete)
+    {
+        sqlite3_bind_text(delete_statment, 1, [keyToDelete UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(delete_statment, 2, [weddingName UTF8String], -1, SQLITE_TRANSIENT);
+    }else
+    {
+         sqlite3_bind_text(delete_statment, 1, [weddingName UTF8String], -1, SQLITE_TRANSIENT);
+    }
+    
+
     
 	int success = sqlite3_step(delete_statment);
 	

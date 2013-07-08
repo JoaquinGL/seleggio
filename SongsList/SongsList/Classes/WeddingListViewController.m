@@ -18,6 +18,7 @@
     WeddingListModel *weddingListModel;
     DKLiveBlurView *backgroundView;
     IBOutlet UITableViewCell *cell;
+    NSMutableArray *items;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -104,6 +105,8 @@
     if (!weddingListModel)
         weddingListModel = [[WeddingListModel alloc] init];
     
+    items = [self itemsFiltered];
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -122,7 +125,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
-    int number = [[self itemsFiltered] count];
+    int number = [items count];
     
     return number + 2;
 }
@@ -138,7 +141,7 @@
     }
     
     if (indexPath.row > 1) {
-        NSString *weddingName = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
+        NSString *weddingName = [items objectAtIndex:indexPath.row - 2];
         
         cell.textLabel.text = weddingName;
     } else {
@@ -157,7 +160,7 @@
     
     if (indexPath.row >1)
     {
-        NSString *weddingName = [[self itemsFiltered] objectAtIndex:indexPath.row - 2];
+        NSString *weddingName = [items objectAtIndex:indexPath.row - 2];
         
         DetailWeddingViewController *detailViewController = [[DetailWeddingViewController alloc] init];
         
@@ -167,6 +170,31 @@
     }
     
 }
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Do whatever data deletion you need to do...
+        // Delete the row from the data source
+        
+        
+        if(weddingListModel)
+        {
+            NSString *weddingName = [items objectAtIndex:indexPath.row - 2];
+            
+            [weddingListModel deleteSong:nil :weddingName];
+        }
+        
+        // [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [tableView endUpdates];
+    
+    [items removeObjectAtIndex:indexPath.row -2];
+    
+    [self.tableView reloadData];
+}
+
 
 
 - (IBAction)dismissView:(id)sender

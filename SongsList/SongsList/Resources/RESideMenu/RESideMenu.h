@@ -29,8 +29,11 @@
 #import "REBackgroundView.h"
 #import "RESideMenuCell.h"
 #import "RESideMenuItem.h"
+#import "CPPickerView.h"
 
-@interface RESideMenu : NSObject <UITableViewDataSource, UITableViewDelegate>
+
+@interface RESideMenu : NSObject <UITableViewDataSource, UITableViewDelegate, CPPickerViewDataSource, CPPickerViewDelegate>
+
 
 @property (strong, readonly, nonatomic) NSArray *items;
 @property (assign, readwrite, nonatomic) CGFloat verticalOffset;
@@ -42,6 +45,7 @@
 @property (strong, readwrite, nonatomic) UIImage *backgroundImage;
 @property (assign, readwrite, nonatomic) BOOL hideStatusBarArea;
 @property (assign, readwrite, nonatomic) BOOL isShowing;
+@property (nonatomic, strong) CPPickerView *defaultPickerView;
 
 @property (assign, readwrite, nonatomic) NSString *titleOfWedding;
 

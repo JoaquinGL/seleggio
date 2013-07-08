@@ -21,6 +21,8 @@
 		482920F01762470400649FDC /* FancyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482920EF1762470400649FDC /* FancyCellView.xib */; };
 		482920F41762476700649FDC /* TTUITableViewZoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482920F31762476700649FDC /* TTUITableViewZoomController.m */; };
 		482920F6176247E200649FDC /* about-tomthorpelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 482920F5176247E200649FDC /* about-tomthorpelogo.png */; };
+		482DB2BD178AD6F200F9AB0E /* CPPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 482DB2BA178AD6F200F9AB0E /* CPPickerView.m */; };
+		482DB2BE178AD6F200F9AB0E /* CPPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482DB2BC178AD6F200F9AB0E /* CPPickerViewCell.m */; };
 		4842E347177ACAC100F63E3A /* WeddingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E346177ACAC100F63E3A /* WeddingList.m */; };
 		4842E34A177AD25200F63E3A /* WeddingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E349177AD25200F63E3A /* WeddingListModel.m */; };
 		4842E34D177AD3C000F63E3A /* WeddingListDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E34C177AD3BF00F63E3A /* WeddingListDAO.m */; };
@@ -84,6 +86,8 @@
 		48CE4CAC1782D08700BB7443 /* RESideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA31782D08700BB7443 /* RESideMenuCell.m */; };
 		48CE4CAD1782D08700BB7443 /* RESideMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA51782D08700BB7443 /* RESideMenuItem.m */; };
 		48CE4CAE1782D08700BB7443 /* UIWindow+RESideMenuExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CA71782D08700BB7443 /* UIWindow+RESideMenuExtensions.m */; };
+		48CE4CB11785441F00BB7443 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CE4CB01785441E00BB7443 /* VideoViewController.m */; };
+		48CE4CB3178547CC00BB7443 /* Seleggio1.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 48CE4CB2178547CC00BB7443 /* Seleggio1.m4v */; };
 		48F86B221765B7030064F488 /* DetailSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F86B211765B7030064F488 /* DetailSongViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +112,10 @@
 		482920F21762476700649FDC /* TTUITableViewZoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUITableViewZoomController.h; sourceTree = "<group>"; };
 		482920F31762476700649FDC /* TTUITableViewZoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTUITableViewZoomController.m; sourceTree = "<group>"; };
 		482920F5176247E200649FDC /* about-tomthorpelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-tomthorpelogo.png"; sourceTree = "<group>"; };
+		482DB2B9178AD6F200F9AB0E /* CPPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPickerView.h; sourceTree = "<group>"; };
+		482DB2BA178AD6F200F9AB0E /* CPPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPickerView.m; sourceTree = "<group>"; };
+		482DB2BB178AD6F200F9AB0E /* CPPickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPickerViewCell.h; sourceTree = "<group>"; };
+		482DB2BC178AD6F200F9AB0E /* CPPickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPickerViewCell.m; sourceTree = "<group>"; };
 		4842E345177ACAC100F63E3A /* WeddingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingList.h; sourceTree = "<group>"; };
 		4842E346177ACAC100F63E3A /* WeddingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeddingList.m; sourceTree = "<group>"; };
 		4842E348177AD25200F63E3A /* WeddingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingListModel.h; sourceTree = "<group>"; };
@@ -196,6 +204,9 @@
 		48CE4CA51782D08700BB7443 /* RESideMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenuItem.m; sourceTree = "<group>"; };
 		48CE4CA61782D08700BB7443 /* UIWindow+RESideMenuExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RESideMenuExtensions.h"; sourceTree = "<group>"; };
 		48CE4CA71782D08700BB7443 /* UIWindow+RESideMenuExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RESideMenuExtensions.m"; sourceTree = "<group>"; };
+		48CE4CAF1785441E00BB7443 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		48CE4CB01785441E00BB7443 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		48CE4CB2178547CC00BB7443 /* Seleggio1.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Seleggio1.m4v; sourceTree = "<group>"; };
 		48F86B201765B7030064F488 /* DetailSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSongViewController.h; sourceTree = "<group>"; };
 		48F86B211765B7030064F488 /* DetailSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSongViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,12 +216,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487FF6D81765DFD90079452D /* MediaPlayer.framework in Frameworks */,
 				48A3F0BD177C283600D71378 /* QuartzCore.framework in Frameworks */,
 				487356AA1777AF8B00BD73CF /* Accelerate.framework in Frameworks */,
 				48A80578176898810018BD97 /* SystemConfiguration.framework in Frameworks */,
 				48C5A5BE176731F9005097A2 /* libsqlite3.0.dylib in Frameworks */,
 				482920C117623AFE00649FDC /* UIKit.framework in Frameworks */,
-				487FF6D81765DFD90079452D /* MediaPlayer.framework in Frameworks */,
 				487FF6D61765DFD00079452D /* AVFoundation.framework in Frameworks */,
 				482920C317623AFE00649FDC /* Foundation.framework in Frameworks */,
 				482920C517623AFE00649FDC /* CoreGraphics.framework in Frameworks */,
@@ -224,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				48A3F0C9177C5FEF00D71378 /* songsList.sqlite */,
-				48A3F0BC177C283600D71378 /* QuartzCore.framework */,
 				482920C617623AFE00649FDC /* SongsList */,
 				482920BF17623AFE00649FDC /* Frameworks */,
 				482920BE17623AFE00649FDC /* Products */,
@@ -242,6 +252,7 @@
 		482920BF17623AFE00649FDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48A3F0BC177C283600D71378 /* QuartzCore.framework */,
 				487356A91777AF8B00BD73CF /* Accelerate.framework */,
 				48A80577176898810018BD97 /* SystemConfiguration.framework */,
 				48C5A5BD176731F9005097A2 /* libsqlite3.0.dylib */,
@@ -303,6 +314,8 @@
 				48B2ADD31768708400D04204 /* Animation.m */,
 				487356A31777AF4E00BD73CF /* DKLiveBlurView.h */,
 				487356A41777AF4E00BD73CF /* DKLiveBlurView.m */,
+				48CE4CAF1785441E00BB7443 /* VideoViewController.h */,
+				48CE4CB01785441E00BB7443 /* VideoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -310,6 +323,8 @@
 		482920E417623B4000649FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				482DB2B8178AD6F200F9AB0E /* CPPickerView */,
+				48CE4CB2178547CC00BB7443 /* Seleggio1.m4v */,
 				48CE4C991782D08700BB7443 /* RESideMenu */,
 				48CE4C951781790600BB7443 /* OrderCell */,
 				48A3F0BE177C2D3A00D71378 /* MBProgressHUD */,
@@ -367,6 +382,17 @@
 				482920F31762476700649FDC /* TTUITableViewZoomController.m */,
 			);
 			path = global;
+			sourceTree = "<group>";
+		};
+		482DB2B8178AD6F200F9AB0E /* CPPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				482DB2B9178AD6F200F9AB0E /* CPPickerView.h */,
+				482DB2BA178AD6F200F9AB0E /* CPPickerView.m */,
+				482DB2BB178AD6F200F9AB0E /* CPPickerViewCell.h */,
+				482DB2BC178AD6F200F9AB0E /* CPPickerViewCell.m */,
+			);
+			path = CPPickerView;
 			sourceTree = "<group>";
 		};
 		487FF6D11765DFAF0079452D /* XCDYouTubeVideoPlayerViewController */ = {
@@ -563,6 +589,7 @@
 				48C4C7A61777B88900B52346 /* ListadoBG@2x.png in Resources */,
 				48A3F0C4177C2EFD00D71378 /* 37x-Checkmark.png in Resources */,
 				48A3F0C5177C2EFD00D71378 /* 37x-Checkmark@2x.png in Resources */,
+				48CE4CB3178547CC00BB7443 /* Seleggio1.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +629,9 @@
 				48CE4CAC1782D08700BB7443 /* RESideMenuCell.m in Sources */,
 				48CE4CAD1782D08700BB7443 /* RESideMenuItem.m in Sources */,
 				48CE4CAE1782D08700BB7443 /* UIWindow+RESideMenuExtensions.m in Sources */,
+				48CE4CB11785441F00BB7443 /* VideoViewController.m in Sources */,
+				482DB2BD178AD6F200F9AB0E /* CPPickerView.m in Sources */,
+				482DB2BE178AD6F200F9AB0E /* CPPickerViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,8 +669,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Joaquin Giraldez Lopez (R543J5D9UZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joaquin Giraldez Lopez (R543J5D9UZ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lets Health S.L.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lets Health S.L.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -655,8 +685,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "049367AA-8DBD-405D-B969-65D39E65B6E2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "049367AA-8DBD-405D-B969-65D39E65B6E2";
+				PROVISIONING_PROFILE = "CBF84F20-F739-4185-A7BD-826B2CD2DB83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CBF84F20-F739-4185-A7BD-826B2CD2DB83";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -692,15 +722,15 @@
 		482920E117623AFE00649FDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Joaquin Giraldez Lopez (R543J5D9UZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joaquin Giraldez Lopez (R543J5D9UZ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lets Health S.L.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lets Health S.L.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SongsList/SongsList-Prefix.pch";
 				INFOPLIST_FILE = "SongsList/SongsList-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "049367AA-8DBD-405D-B969-65D39E65B6E2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "049367AA-8DBD-405D-B969-65D39E65B6E2";
+				PROVISIONING_PROFILE = "CBF84F20-F739-4185-A7BD-826B2CD2DB83";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CBF84F20-F739-4185-A7BD-826B2CD2DB83";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

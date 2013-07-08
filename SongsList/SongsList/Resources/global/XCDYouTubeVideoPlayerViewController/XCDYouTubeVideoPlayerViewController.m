@@ -106,6 +106,10 @@ static void *MoviePlayerKey = &MoviePlayerKey;
 		elField = [@"&el=" stringByAppendingString:elField];
 	
 	NSURL *videoInfoURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.youtube.com/get_video_info?video_id=%@%@&ps=default&eurl=&gl=US&hl=en", self.videoIdentifier ?: @"", elField]];
+    
+    
+    
+    
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:videoInfoURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
 	[self.connection cancel];
 	self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];

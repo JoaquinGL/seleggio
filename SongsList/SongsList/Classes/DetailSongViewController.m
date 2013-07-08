@@ -15,7 +15,6 @@
 #import "WeddingListModel.h"
 
 
-#define URL_YOUTUBE @"https://gdata.youtube.com/feeds/api/standardfeeds/on_the_web?v=2&alt=json&max-results=1"
 
 
 @interface DetailSongViewController () <UITextFieldDelegate>
@@ -121,8 +120,15 @@ typedef enum {
     [self initWeddingName];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
+   
+    
+   
     
 }
+
+
+
+
 
 - (void) initWeddingName
 {
@@ -130,9 +136,6 @@ typedef enum {
         weddingListModel = [[WeddingListModel alloc] init];
     
     weddingName = [weddingListModel getTheLastWeddingName];
-    
-
-
 }
 
 
@@ -212,30 +215,6 @@ typedef enum {
     }
 }
 
-- (IBAction) playTrendingVideo:(id)sender
-{
-	XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [XCDYouTubeVideoPlayerViewController new];
-    
-    [self.videoContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    [videoPlayerViewController presentInView:self.videoContainerView];
-	
-	NSURL *url = [NSURL URLWithString:URL_YOUTUBE];
-    
-	[ NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url]
-                                       queue:[NSOperationQueue new]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
-		id json = [ NSJSONSerialization JSONObjectWithData: data ?: [ NSData new ]
-                                                   options: 0
-                                                     error: NULL ];
-        
-		NSString *videoIdentifier = [ [ [ json valueForKeyPath:@"feed.entry.media$group.yt$videoid.$t"] lastObject] description];
-		
-        videoPlayerViewController.videoIdentifier = videoIdentifier;
-	}
-     ];
-}
 
 
 
@@ -519,6 +498,8 @@ typedef enum {
             [self showPrompt];
         }];
 
+      
+        
         
         (weddingName) ? (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem, deleteItem, addToList]]) : (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem]]);
         

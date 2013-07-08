@@ -116,6 +116,44 @@ const int INTERSTITIAL_STEPS = 99;
 
 //- (void)animate
 
+
+- (void) setPickerHeader
+{
+    self.defaultPickerView = [[CPPickerView alloc] initWithFrame:CGRectMake(85, 30.0, 150, 40)];
+    self.defaultPickerView.backgroundColor = [UIColor clearColor];
+    self.defaultPickerView.dataSource = self;
+    self.defaultPickerView.delegate = self;
+    [self.defaultPickerView reloadData];
+    [self.tableView.tableHeaderView addSubview:self.defaultPickerView];
+
+}
+
+// Aqui hay que pasarle como paramentro el listado de bodas, luego el nombre de la boda se guarda segun el nombre del titulo. Si es "nueva lista de bodas", entonces
+// pedirá un nombre a la hora de crearlo.
+// El añadir a..., sobra, ya que lo puedes seleccionar en la cabecera. Falta añadir un par de flechas.
+
+#pragma mark - CPPickerViewDataSource
+
+- (NSInteger)numberOfItemsInPickerView:(CPPickerView *)pickerView
+{
+    return 100;
+}
+
+- (NSString *)pickerView:(CPPickerView *)pickerView titleForItem:(NSInteger)item
+{
+    return [NSString stringWithFormat:@"%i", item + 1];
+}
+
+
+#pragma mark - CPPickerViewDelegate
+
+- (void)pickerView:(CPPickerView *)pickerView didSelectItem:(NSInteger)item
+{
+    
+}
+
+
+
 - (void)showAfterDelay
 {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
@@ -146,19 +184,21 @@ const int INTERSTITIAL_STEPS = 99;
     _tableView.alpha = 0;
     
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+//    
+//    label.backgroundColor = [UIColor clearColor];
+//    
+//    label.textColor = [UIColor blackColor];
+//    
+//    label.font = [UIFont fontWithName:@"Heiti TC" size:24];
+//    
+//    label.textAlignment = NSTextAlignmentCenter;
+//    
+//    label.text = self.titleOfWedding;
+//
+//    self.tableView.tableHeaderView= label;
     
-    label.backgroundColor = [UIColor clearColor];
-    
-    label.textColor = [UIColor blackColor];
-    
-    label.font = [UIFont fontWithName:@"Heiti TC" size:24];
-    
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    label.text = self.titleOfWedding;
-    
-    self.tableView.tableHeaderView= label;
+    [self setPickerHeader];
     
     [window addSubview:_tableView];
     
