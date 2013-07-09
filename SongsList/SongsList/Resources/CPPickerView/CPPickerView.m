@@ -158,7 +158,7 @@
 
 - (void)setup
 {
-    _itemFont = [UIFont fontWithName:@"Heiti TC" size:24];
+    _itemFont = [UIFont fontWithName:@"Heiti TC" size:20];
     _itemColor = [UIColor blackColor];
     _showGlass = NO;
     _peekInset = UIEdgeInsetsMake(0, 0, 0, 0);

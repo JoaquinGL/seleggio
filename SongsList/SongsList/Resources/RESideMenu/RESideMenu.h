@@ -49,6 +49,9 @@
 
 @property (assign, readwrite, nonatomic) NSString *titleOfWedding;
 
+@property (retain, readwrite, nonatomic) NSMutableArray* weddingNames;
+
+
 - (id)initWithItems:(NSArray *)items;
 - (void)show;
 - (void)hide;

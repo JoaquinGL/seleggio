@@ -74,6 +74,18 @@
 
 }
 
+- ( NSMutableArray* ) gettAllNames
+{
+    [self initWeddingListDAO];
+    
+    NSMutableArray *_itemsFiltered = [NSMutableArray new];
+    
+    [_itemsFiltered setArray:[[NSSet setWithArray:[weddingListDAO gettAllNamesInDB]] allObjects]];
+    
+    return _itemsFiltered;
+}
+
+
 - ( id )getIDSongFromIDWedding: ( id )idWedding
 {
     [self initWeddingListDAO];

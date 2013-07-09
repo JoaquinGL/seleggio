@@ -247,6 +247,21 @@
 }
 
 
+- ( NSMutableArray* )gettAllNamesInDB
+{
+    [ self initWeddingContent ];
+    
+    NSMutableArray *allNames = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i<[weddingContent count]; i++)
+    {
+        [allNames addObject:( ( WeddingList* ) [ weddingContent objectAtIndex:i ]).name];
+    }
+    
+    return allNames;
+}
+
+
 - ( NSInteger ) getNumberOfRegisters
 {
     [self initWeddingContent];

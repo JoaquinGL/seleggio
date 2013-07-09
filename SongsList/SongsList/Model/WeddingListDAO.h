@@ -23,4 +23,6 @@
 
 - (void) deleteFromDatabase:( id ) keyToDelete : (id) weddingName;
 
+- ( NSMutableArray* )gettAllNamesInDB;
+
 @end

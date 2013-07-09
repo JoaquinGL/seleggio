@@ -15,7 +15,7 @@
 #import "WeddingListModel.h"
 
 
-
+#define TITLE_NEW_WEDDING_LIST @"Nueva lista"
 
 @interface DetailSongViewController () <UITextFieldDelegate>
 {
@@ -475,10 +475,14 @@ typedef enum {
         RESideMenuItem *addItem = [[RESideMenuItem alloc] initWithTitle:title action:^(RESideMenu *menu, RESideMenuItem *item) {
             [menu hide];
 
-            if (! weddingName)
+            NSLog(@"%@",_sideMenu.titleOfWedding);
+            
+            if ([_sideMenu.titleOfWedding isEqualToString:TITLE_NEW_WEDDING_LIST])
                 [self showPrompt];
             else
             {
+                weddingName = _sideMenu.titleOfWedding;
+                
                 [self saveWeddingName];
             }
             
@@ -490,23 +494,32 @@ typedef enum {
         RESideMenuItem *deleteItem = [[RESideMenuItem alloc] initWithTitle:title action:^(RESideMenu *menu, RESideMenuItem *item) {
             [menu hide];
             
-            [self removeSong];
+            if ([_sideMenu.titleOfWedding isEqualToString:@"Añadir a nueva lista"])
+                NSLog(@"Borrado nulo");
+            else
+            {
+                weddingName = _sideMenu.titleOfWedding;
+                
+                [self removeSong];
+            }
+            
         }];
         
-        RESideMenuItem *addToList = [[RESideMenuItem alloc] initWithTitle:@"Añadir a ..." action:^(RESideMenu *menu, RESideMenuItem *item) {
-            [menu hide];
-            [self showPrompt];
-        }];
+    
 
       
+       
         
+        (weddingName) ? (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem, deleteItem]]) : (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem]]);
         
-        (weddingName) ? (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem, deleteItem, addToList]]) : (_sideMenu = [[RESideMenu alloc] initWithItems:@[addItem]]);
+        if (!_sideMenu.weddingNames)
+            _sideMenu.weddingNames = [[NSMutableArray alloc] init];
         
+        _sideMenu.weddingNames = [weddingListModel gettAllNames];
         
         _sideMenu.verticalOffset = IS_WIDESCREEN ? 110 : 76;
         _sideMenu.hideStatusBarArea = [self OSVersion] < 7;
-        (weddingName) ? (_sideMenu.titleOfWedding = [NSString stringWithString:weddingName]) : (_sideMenu.titleOfWedding = @"Nueva Lista de Bodas");
+        (weddingName) ? (_sideMenu.titleOfWedding = [NSString stringWithString:weddingName]) : (_sideMenu.titleOfWedding = TITLE_NEW_WEDDING_LIST);
 
     }
     

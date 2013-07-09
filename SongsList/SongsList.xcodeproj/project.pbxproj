@@ -23,6 +23,8 @@
 		482920F6176247E200649FDC /* about-tomthorpelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 482920F5176247E200649FDC /* about-tomthorpelogo.png */; };
 		482DB2BD178AD6F200F9AB0E /* CPPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 482DB2BA178AD6F200F9AB0E /* CPPickerView.m */; };
 		482DB2BE178AD6F200F9AB0E /* CPPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482DB2BC178AD6F200F9AB0E /* CPPickerViewCell.m */; };
+		482DB2C1178C257B00F9AB0E /* scrollArrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 482DB2BF178C257B00F9AB0E /* scrollArrows.png */; };
+		482DB2C2178C257B00F9AB0E /* scrollArrows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 482DB2C0178C257B00F9AB0E /* scrollArrows@2x.png */; };
 		4842E347177ACAC100F63E3A /* WeddingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E346177ACAC100F63E3A /* WeddingList.m */; };
 		4842E34A177AD25200F63E3A /* WeddingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E349177AD25200F63E3A /* WeddingListModel.m */; };
 		4842E34D177AD3C000F63E3A /* WeddingListDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4842E34C177AD3BF00F63E3A /* WeddingListDAO.m */; };
@@ -116,6 +118,8 @@
 		482DB2BA178AD6F200F9AB0E /* CPPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPickerView.m; sourceTree = "<group>"; };
 		482DB2BB178AD6F200F9AB0E /* CPPickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPickerViewCell.h; sourceTree = "<group>"; };
 		482DB2BC178AD6F200F9AB0E /* CPPickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPickerViewCell.m; sourceTree = "<group>"; };
+		482DB2BF178C257B00F9AB0E /* scrollArrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollArrows.png; sourceTree = "<group>"; };
+		482DB2C0178C257B00F9AB0E /* scrollArrows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrollArrows@2x.png"; sourceTree = "<group>"; };
 		4842E345177ACAC100F63E3A /* WeddingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingList.h; sourceTree = "<group>"; };
 		4842E346177ACAC100F63E3A /* WeddingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeddingList.m; sourceTree = "<group>"; };
 		4842E348177AD25200F63E3A /* WeddingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeddingListModel.h; sourceTree = "<group>"; };
@@ -323,8 +327,8 @@
 		482920E417623B4000649FDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				482DB2B8178AD6F200F9AB0E /* CPPickerView */,
 				48CE4CB2178547CC00BB7443 /* Seleggio1.m4v */,
+				482DB2B8178AD6F200F9AB0E /* CPPickerView */,
 				48CE4C991782D08700BB7443 /* RESideMenu */,
 				48CE4C951781790600BB7443 /* OrderCell */,
 				48A3F0BE177C2D3A00D71378 /* MBProgressHUD */,
@@ -341,6 +345,8 @@
 		482920E517623B4000649FDC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				482DB2BF178C257B00F9AB0E /* scrollArrows.png */,
+				482DB2C0178C257B00F9AB0E /* scrollArrows@2x.png */,
 				48A3F0C2177C2EFD00D71378 /* 37x-Checkmark.png */,
 				48A3F0C3177C2EFD00D71378 /* 37x-Checkmark@2x.png */,
 				48AB87E1177353620046076C /* qbkmenu */,
@@ -590,6 +596,8 @@
 				48A3F0C4177C2EFD00D71378 /* 37x-Checkmark.png in Resources */,
 				48A3F0C5177C2EFD00D71378 /* 37x-Checkmark@2x.png in Resources */,
 				48CE4CB3178547CC00BB7443 /* Seleggio1.m4v in Resources */,
+				482DB2C1178C257B00F9AB0E /* scrollArrows.png in Resources */,
+				482DB2C2178C257B00F9AB0E /* scrollArrows@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

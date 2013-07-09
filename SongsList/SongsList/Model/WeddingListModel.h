@@ -21,4 +21,6 @@
 
 - (void) deleteSong:( id ) keyToDelete : ( id ) weddingName;
 
+- ( NSMutableArray* ) gettAllNames;
+
 @end

@@ -27,6 +27,8 @@
 #import "AccelerationAnimation.h"
 #import "Evaluate.h"
 
+#define TITLE_NEW_WEDDING_LIST @"Nueva lista"
+
 const int INTERSTITIAL_STEPS = 99;
 
 @interface RESideMenu ()
@@ -119,14 +121,34 @@ const int INTERSTITIAL_STEPS = 99;
 
 - (void) setPickerHeader
 {
-    self.defaultPickerView = [[CPPickerView alloc] initWithFrame:CGRectMake(85, 30.0, 150, 40)];
-    self.defaultPickerView.backgroundColor = [UIColor clearColor];
-    self.defaultPickerView.dataSource = self;
-    self.defaultPickerView.delegate = self;
-    [self.defaultPickerView reloadData];
+    
+    UIImage *imageScroll = [UIImage imageNamed:@"scrollArrows.png"];
+    
+    UIImageView *scrollArrows = [[UIImageView alloc] initWithImage:imageScroll];
+    
+    [scrollArrows setFrame:CGRectMake(0, 27, scrollArrows.frame.size.width, scrollArrows.frame.size.height)];
+    
+    [self.tableView.tableHeaderView addSubview:scrollArrows];
+    
+    if (!self.defaultPickerView)
+    {
+        self.defaultPickerView = [[CPPickerView alloc] initWithFrame:CGRectMake(15, 30.0, 290, 40)];
+        self.defaultPickerView.backgroundColor = [UIColor clearColor];
+        self.defaultPickerView.dataSource = self;
+        self.defaultPickerView.delegate = self;
+        
+        int position= [self.weddingNames indexOfObject:self.titleOfWedding];
+        
+        [self.defaultPickerView reloadData];
+        
+        [self.defaultPickerView selectItemAtIndex:position animated:YES];
+    }
+        
+    
     [self.tableView.tableHeaderView addSubview:self.defaultPickerView];
-
 }
+
+
 
 // Aqui hay que pasarle como paramentro el listado de bodas, luego el nombre de la boda se guarda segun el nombre del titulo. Si es "nueva lista de bodas", entonces
 // pedirá un nombre a la hora de crearlo.
@@ -136,12 +158,17 @@ const int INTERSTITIAL_STEPS = 99;
 
 - (NSInteger)numberOfItemsInPickerView:(CPPickerView *)pickerView
 {
-    return 100;
+    
+    return [self.weddingNames count];
 }
 
 - (NSString *)pickerView:(CPPickerView *)pickerView titleForItem:(NSInteger)item
 {
-    return [NSString stringWithFormat:@"%i", item + 1];
+    NSString * nameOfPicker = @"";
+    
+    nameOfPicker = (NSString *)[self.weddingNames objectAtIndex:item];
+    
+    return nameOfPicker;
 }
 
 
@@ -149,9 +176,10 @@ const int INTERSTITIAL_STEPS = 99;
 
 - (void)pickerView:(CPPickerView *)pickerView didSelectItem:(NSInteger)item
 {
+    NSLog(@"%@",[self.weddingNames objectAtIndex:item]);
     
+    self.titleOfWedding = [self.weddingNames objectAtIndex:item];
 }
-
 
 
 - (void)showAfterDelay
@@ -197,6 +225,13 @@ const int INTERSTITIAL_STEPS = 99;
 //    label.text = self.titleOfWedding;
 //
 //    self.tableView.tableHeaderView= label;
+    
+    
+   
+    
+    
+    [self.weddingNames addObject:TITLE_NEW_WEDDING_LIST];
+    
     
     [self setPickerHeader];
     
